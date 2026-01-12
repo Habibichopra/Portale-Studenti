@@ -13,6 +13,4 @@ if (isset($required_ruolo) && $_SESSION['ruolo'] !== $required_ruolo) {
     header("Location: " . BASE_URL . "index.php");
     exit;
 }
-
-
 ?>
