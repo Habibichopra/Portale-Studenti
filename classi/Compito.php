@@ -40,7 +40,37 @@ class Compito {
 
     //aggorna compito
     public function aggiornaCompito($id, $dati) {
-    
+        $query = "UPDATE " . $this->nome_tabella . " SET 
+                    titolo = :titolo, 
+                    descrizione = :descrizione, 
+                    data_scadenza = :scadenza, 
+                    punti_max = :punti_max";
+        
+        if (!empty($dati['allegato'])) {
+            $query .= ", allegato = :allegato";
+        }
+
+        $query .= " WHERE id = :id";
+        
+        $stmt = $this->conn->prepare($query);
+
+        $titolo = htmlspecialchars(strip_tags($dati['titolo']));
+        $descrizione = htmlspecialchars(strip_tags($dati['descrizione']));
+        
+        $stmt->bindParam(":titolo", $titolo);
+        $stmt->bindParam(":descrizione", $descrizione);
+        $stmt->bindParam(":scadenza", $dati['data_scadenza']);
+        $stmt->bindParam(":punti_max", $dati['punti_max']);
+        $stmt->bindParam(":id", $id);
+
+        if (!empty($dati['allegato'])) {
+            $stmt->bindParam(":allegato", $dati['allegato']);
+        }
+
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
     }
 
     //elimina un compito
