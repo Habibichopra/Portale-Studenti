@@ -69,7 +69,26 @@ class Voto{
 
     //get voti di un studente
     public function getVotiByStudente($studente_id, $corso_id = null) {
+        $query = "SELECT v.*, c.nome_corso, c.codice_corso 
+                  FROM " . $this->nome_tabella . " v
+                  JOIN " . $this->tabella_corsi . " c ON v.corso_id = c.id
+                  WHERE v.studente_id = :sid";
+        
+        if ($corso_id) {
+            $query .= " AND v.corso_id = :cid";
+        }
+        
+        $query .= " ORDER BY v.data_voto DESC";
 
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":sid", $studente_id);
+        
+        if ($corso_id) {
+            $stmt->bindParam(":cid", $corso_id);
+        }
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     //calcola media voti studente
