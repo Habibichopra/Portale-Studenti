@@ -37,7 +37,22 @@ class Voto{
 
     //aggiorna voto
     public function aggiornaVoto($id, $voto, $note) {
+        $query = "UPDATE " . $this->nome_tabella . " 
+                  SET voto = :voto, note = :note 
+                  WHERE id = :id";
+        
+        $stmt = $this->conn->prepare($query);
 
+        $note = htmlspecialchars(strip_tags($note));
+
+        $stmt->bindParam(":voto", $voto);
+        $stmt->bindParam(":note", $note);
+        $stmt->bindParam(":id", $id);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
     }
 
     //eliminazione del voto
