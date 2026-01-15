@@ -75,7 +75,15 @@ class Compito {
 
     //elimina un compito
     public function eliminaCompito($id) {
-    
+        $query = "DELETE FROM " . $this->nome_tabella . " WHERE id = ?";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $id);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
     }
 
     //compito in base al id
