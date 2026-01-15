@@ -18,7 +18,32 @@ class User {
 
     //effettua il login dell utente
     public function login($username, $password) {
-    
+        $query = "SELECT id, username, password_hash, ruolo, nome, cognome FROM " . $this->nome_tabella . " WHERE username = :username LIMIT 1";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":username", $username);
+        $stmt->execute();
+
+        //se utente trovato prende i dati dell'utente
+        if($stmt->rowCount() > 0) {
+            $riga = $stmt->fetch(PDO::FETCH_ASSOC);
+            //verificazione se la pasword inserita corrisponde all'hash
+            if(password_verify($password, $riga['password_hash'])) {
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
+                
+                //salvataggio dei dati nellla sessione
+                $_SESSION['user_id'] = $riga['id'];
+                $_SESSION['username'] = $riga['username'];
+                $_SESSION['ruolo'] = $riga['ruolo'];
+                $_SESSION['nome_completo'] = $riga['nome'] . " " . $riga['cognome'];
+                $_SESSION['cognome'] = $riga['cognome']; 
+
+                return true;
+            }
+        }
+        return false;
     }
     
     //effettua il logout dell'tente
