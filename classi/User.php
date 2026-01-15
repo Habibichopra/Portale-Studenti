@@ -33,7 +33,14 @@ class User {
 
     //restituisce i dati dell'utente in base
     public function getUserById($id) {
+        $query = "SELECT id, username, email, nome, cognome, ruolo, matricola, creato_il 
+            FROM " . $this->nome_tabella . " WHERE id = ? LIMIT 1";
 
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     //aggiorna il profilo delutente
