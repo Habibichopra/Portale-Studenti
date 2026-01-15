@@ -114,7 +114,19 @@ class Voto{
 
     //statistiche del corso
     public function getStatisticheCorso($corso_id) {
+        $query = "SELECT 
+            AVG(voto) as media_corso, 
+            MAX(voto) as voto_max, 
+            MIN(voto) as voto_min, 
+            COUNT(*) as totale_voti 
+            FROM " . $this->nome_tabella . " 
+            WHERE corso_id = ?";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $corso_id);
+        $stmt->execute();
 
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     //generazione pagella in formato CSV
