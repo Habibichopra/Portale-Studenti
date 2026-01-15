@@ -38,7 +38,34 @@ class User {
 
     //aggiorna il profilo delutente
     public function updateProfile($id, $dati){
+        $query = "UPDATE " . $this->nome_tabella . " 
+            SET nome = :nome, cognome = :cognome, email = :email";
 
+        if(!empty($dati['password'])) {
+            $query .= ", password_hash = :password_hash";
+        }
+
+        $query .= " WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+
+        $nome = htmlspecialchars(strip_tags($dati['nome']));
+        $cognome = htmlspecialchars(strip_tags($dati['cognome']));
+        $email = htmlspecialchars(strip_tags($dati['email']));
+
+        $stmt->bindParam(":nome", $nome);
+        $stmt->bindParam(":cognome", $cognome);
+        $stmt->bindParam(":email", $email);
+        $stmt->bindParam(":id", $id);
+
+        if(!empty($dati['password'])) {
+            $password_hash = password_hash($dati['password'], PASSWORD_BCRYPT);
+            $stmt->bindParam(":password_hash", $password_hash);
+        }
+
+        if($stmt->execute()) {
+            return true;
+        }
+        return false;
     }
 
     //restituisce la lista di tutti i studenti
