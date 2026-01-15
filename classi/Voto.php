@@ -131,7 +131,41 @@ class Voto{
 
     //generazione pagella in formato CSV
     public function generatePagella($studente_id) {
-    
+        $voti = $this->getVotiByStudente($studente_id);
+        
+        if (empty($voti)) {
+            return false;
+        }
+
+
+        $filename = "pagella_" . $studente_id . "_" . time() . ".csv";
+        $export_dir = __DIR__ . "/../esportazioni/";
+        
+        if (!file_exists($export_dir)) {
+            mkdir($export_dir, 0777, true);
+        }
+        
+        $filepath = $export_dir . $filename;
+
+        $file = fopen($filepath, 'w');
+
+        fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
+        fputcsv($file, array('Corso', 'Codice', 'Tipo Valutazione', 'Voto', 'Data', 'Note'));
+
+        foreach ($voti as $voto) {
+            fputcsv($file, array(
+                $voto['nome_corso'],
+                $voto['codice_corso'],
+                ucfirst($voto['tipo_valutazione']),
+                $voto['voto'],
+                $voto['data_voto'],
+                $voto['note']
+            ));
+        }
+
+        fclose($file);
+
+        return $filename;
     }
 }
 
