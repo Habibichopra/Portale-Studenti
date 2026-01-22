@@ -121,7 +121,29 @@ class Consegna {
 
     //controllo se la consegna è in ritardo
     public function checkRitardo($consegna_id) {
+        $query = "SELECT c.data_consegna, t.data_scadenza 
+                  FROM " . $this->nome_tabella . " c
+                  JOIN " . $this->tabella_compiti . " t ON c.compito_id = t.id
+                  WHERE c.id = :id";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id", $consegna_id);
+        $stmt->execute();
+        $riga = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        if ($riga) {
+            $data_consegna = new DateTime($riga['data_consegna']);
+            $data_scadenza = new DateTime($riga['data_scadenza']);
+
+            if ($data_consegna > $data_scadenza) {
+                $update = "UPDATE " . $this->nome_tabella . " SET stato = 'in_ritardo' WHERE id = :id AND stato != 'valutato'";
+                $upStmt = $this->conn->prepare($update);
+                $upStmt->bindParam(":id", $consegna_id);
+                $upStmt->execute();
+                return true; 
+            }
+        }
+        return false; 
     }
 
     //download del file della consegna
