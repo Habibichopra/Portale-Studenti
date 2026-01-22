@@ -6,6 +6,20 @@ class Corso {
     private $nome_tabella = "corsi";
     private $tabella_iscrizioni = "iscrizioni";
     private $tabella_users = "users";
+
+    public function __construct() {
+        $database = Database::getInstance();
+        $this->conn = $database->getConnection();
+    }
+
+
+
+
+
+
+
+
+
 }
 
 ?>
