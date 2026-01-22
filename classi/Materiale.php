@@ -55,7 +55,28 @@ class Materiale {
 
     //eliminazione materiale
     public function eliminaMateriale($id) {
+        $query_select = "SELECT file_path FROM " . $this->nome_tabella . " WHERE id = ?";
+        $stmt_select = $this->conn->prepare($query_select);
+        $stmt_select->bindParam(1, $id);
+        $stmt_select->execute();
+        $riga = $stmt_select->fetch(PDO::FETCH_ASSOC);
 
+        if ($riga) {
+            $percorsoCompleto = __DIR__ . "/../" . $riga['file_path'];
+
+            if (file_exists($percorsoCompleto)) {
+                unlink($percorsoCompleto);
+            }
+
+            $query_delete = "DELETE FROM " . $this->nome_tabella . " WHERE id = ?";
+            $stmt_delete = $this->conn->prepare($query_delete);
+            $stmt_delete->bindParam(1, $id);
+            
+            if ($stmt_delete->execute()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     //ottenere tutti i materiali di un corso
