@@ -77,7 +77,14 @@ class Corso {
 
     //eliminazione corso
     public function eliminaCorso($id) {
-
+        $query = "DELETE FROM " . $this->nome_tabella . " WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $id);
+        
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
     }
 
     //ottieni corso con id
