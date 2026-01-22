@@ -75,7 +75,17 @@ class Consegna {
 
     //get consegna in base al id
     public function getConsegnaById($id) {
+        $query = "SELECT c.*, u.nome, u.cognome, u.matricola, t.titolo as titolo_compito 
+                  FROM " . $this->nome_tabella . " c
+                  JOIN " . $this->tabella_users . " u ON c.studente_id = u.id
+                  JOIN " . $this->tabella_compiti . " t ON c.compito_id = t.id
+                  WHERE c.id = ? LIMIT 1";
 
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     //lista delle consegne per un compito specifico
