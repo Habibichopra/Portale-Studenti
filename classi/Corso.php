@@ -47,7 +47,32 @@ class Corso {
 
     //aggiorna corso
     public function aggiornaCorso($id, $dati) {
-    
+        $query = "UPDATE " . $this->nome_tabella . " SET 
+                    nome_corso = :nome, 
+                    codice_corso = :codice, 
+                    descrizione = :descrizione, 
+                    anno_accademico = :anno, 
+                    crediti = :crediti 
+                  WHERE id = :id";
+        
+        $stmt = $this->conn->prepare($query);
+
+        $nome = htmlspecialchars(strip_tags($dati['nome_corso']));
+        $codice = htmlspecialchars(strip_tags($dati['codice_corso']));
+        $descrizione = htmlspecialchars(strip_tags($dati['descrizione']));
+        $anno = htmlspecialchars(strip_tags($dati['anno_accademico']));
+
+        $stmt->bindParam(":nome", $nome);
+        $stmt->bindParam(":codice", $codice);
+        $stmt->bindParam(":descrizione", $descrizione);
+        $stmt->bindParam(":anno", $anno);
+        $stmt->bindParam(":crediti", $dati['crediti']);
+        $stmt->bindParam(":id", $id);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
     }
 
     //eliminazione corso
