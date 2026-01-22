@@ -129,7 +129,18 @@ class Corso {
 
     //get corsi in base al studente
     public function getCorsiByStudente($studente_id) {
-
+        $query = "SELECT c.*, i.id as iscrizione_id, i.data_iscrizione, 
+                          u.nome as prof_nome, u.cognome as prof_cognome
+                  FROM " . $this->nome_tabella . " c
+                  JOIN " . $this->tabella_iscrizioni . " i ON c.id = i.corso_id
+                  LEFT JOIN " . $this->tabella_users . " u ON c.professore_id = u.id
+                  WHERE i.studente_id = ? AND i.status = 'attivo'";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $studente_id);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     //iscrizione studente al corso
