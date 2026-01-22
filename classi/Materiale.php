@@ -94,7 +94,12 @@ class Materiale {
 
     //download materiale
     public function downloadMateriale($id) {
-
+        $query = "SELECT file_path, titolo, tipo FROM " . $this->nome_tabella . " WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
+        
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
 
