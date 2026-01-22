@@ -14,7 +14,35 @@ class Corso {
 
     //creazione di un corso
     public function createCorso($nome, $codice, $descrizione, $anno, $professore_id, $crediti) {
+        $query = "INSERT INTO " . $this->nome_tabella . " 
+                  (nome_corso, codice_corso, descrizione, anno_accademico, professore_id, crediti) 
+                  VALUES (:nome, :codice, :descrizione, :anno, :prof_id, :crediti)";
+        
+        $stmt = $this->conn->prepare($query);
 
+        $nome = htmlspecialchars(strip_tags($nome));
+        $codice = htmlspecialchars(strip_tags($codice));
+        $descrizione = htmlspecialchars(strip_tags($descrizione));
+        $anno = htmlspecialchars(strip_tags($anno));
+
+        $stmt->bindParam(":nome", $nome);
+        $stmt->bindParam(":codice", $codice);
+        $stmt->bindParam(":descrizione", $descrizione);
+        $stmt->bindParam(":anno", $anno);
+        $stmt->bindParam(":prof_id", $professore_id);
+        $stmt->bindParam(":crediti", $crediti);
+
+        try {
+            if ($stmt->execute()) {
+                return true;
+            }
+        } catch (PDOException $e) {
+            if ($e->getCode() == 23000) {
+                return false; 
+            }
+            throw $e;
+        }
+        return false;
     }
 
     //aggiorna corso
@@ -56,11 +84,6 @@ class Corso {
     public function rimuoviIscrizione($iscrizione_id) {
 
     }
-
-
-
-
-
 
 }
 
