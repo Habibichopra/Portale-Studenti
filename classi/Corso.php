@@ -116,7 +116,15 @@ class Corso {
 
     //get corsi in base al professorei
     public function getCorsiByProfessore($professore_id) {
-
+        $query = "SELECT * FROM " . $this->nome_tabella . " 
+                  WHERE professore_id = ? 
+                  ORDER BY nome_corso ASC";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $professore_id);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     //get corsi in base al studente
