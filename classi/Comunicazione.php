@@ -46,7 +46,20 @@ class Comunicazione {
 
     //recuparare tutte le comunicazioni per un utente specifico
     public function getComunicazioniByUser($user_id) {
+        $query = "SELECT m.*, 
+                         u.nome as nome_mittente, u.cognome as cognome_mittente, u.ruolo as ruolo_mittente,
+                         c.nome_corso
+                  FROM " . $this->nome_tabella . " m
+                  LEFT JOIN " . $this->tabella_users . " u ON m.mittente_id = u.id
+                  LEFT JOIN " . $this->tabella_corsi . " c ON m.corso_id = c.id
+                  WHERE m.destinatario_id = :uid
+                  ORDER BY m.data_invio DESC";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":uid", $user_id);
+        $stmt->execute();
 
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     //sergnare una comunicazione come letta
