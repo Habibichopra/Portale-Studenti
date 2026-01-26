@@ -161,3 +161,63 @@ ul {
     margin-bottom: 15px;
     opacity: 0.3;
 }
+
+/* 4 tabelle e liste */
+.tabella-responsive {
+    overflow-x: auto;
+}
+
+.tabella-semplice {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabella-semplice th {
+    text-align: left;
+    padding: 12px 15px;
+    background-color: #f8f9fa;
+    color: var(--testo-disattivato);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.tabella-semplice td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.tabella-semplice tr:last-child td {
+    border-bottom: none;
+}
+
+.tabella-hover tr:hover {
+    background-color: #f1f2f6;
+}
+
+/* Badge (Etichette colorate) */
+.etichetta-codice, .etichetta-codice- {
+    background: #e8eaed;
+    color: #555;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.etichetta-codice- { font-size: 0.8em; }
+
+.etichetta-voto {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: bold;
+    color: white;
+}
+.etichetta-voto.alto { background-color: var(--colore-successo); }
+.etichetta-voto.medio { background-color: var(--colore-allerta); color: #333; }
+.etichetta-voto.basso { background-color: var(--colore-pericolo); }
