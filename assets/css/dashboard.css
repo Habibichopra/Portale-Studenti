@@ -203,6 +203,11 @@
 
 
 /*style per le pagine di comunicazione*/
+.messaggi-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* spazio tra le card */
+} 
 .messaggio-card {
     background: #fff;
     border: 1px solid #eee;
