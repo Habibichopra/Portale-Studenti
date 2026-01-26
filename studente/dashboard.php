@@ -37,7 +37,13 @@ include '../inclusi/nav.php';
     </header>
 
     <div class="griglia-statistiche">
-
+        <div class="scheda-statistiche <?php echo ($media_voti >= 24) ? 'verde' : 'rosso'; ?>">
+            <div class="icona-statistiche"><i class="fas fa-chart-line"></i></div>
+            <div class="info-statistiche">
+                <h3><?php echo $media_voti; ?></h3>
+                <p>Media Generale</p>
+            </div>
+        </div>
     </div>
 
 </div>
