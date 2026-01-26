@@ -14,4 +14,7 @@ $comunicazioneObj = new Comunicazione();
 $userObj = new User();
 $corsoObj = new Corso();
 
+$messaggio_feedback = '';
+$errore_feedback = '';
+
 ?>
