@@ -104,9 +104,49 @@ include '../inclusi/nav.php';
                         <p>Nessun compito in scadenza. Rilassati!</p>
                     </div>
                 <?php endif; ?>
-
             </div>
+        </section>
 
+
+                <section class="scheda">
+            <div class="scheda-header">
+                <h2><i class="fas fa-medal" ></i> Ultimi Voti</h2>
+                <a href="voti.php" class="btn-testo">Vedi libretto &rarr;</a>
+            </div>
+            
+            <div class="body-scheda">
+                <?php if (count($ultimi_voti) > 0): ?>
+                    <table class="tabella-semplice">
+                        <thead>
+                            <tr>
+                                <th>Materia</th>
+                                <th>Voto</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($ultimi_voti as $voto): ?>
+                                <tr>
+                                    <td>
+                                        <strong><?php echo htmlspecialchars($voto['nome_corso']); ?></strong><br>
+                                        <small class="testo-disattivato"><?php echo ucfirst($voto['tipo_valutazione']); ?></small>
+                                    </td>
+                                    <td>
+                                        <span class="etichetta-voto <?php echo ($voto['voto'] >= 24) ? 'high' : 'medium'; ?>">
+                                            <?php echo $voto['voto']; ?>
+                                        </span>
+                                    </td>
+                                    <td><?php echo date('d/m/Y', strtotime($voto['data_voto'])); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <div class="nessun-contenuto">
+                        <p>Non hai ancora ricevuto voti.</p>
+                    </div>
+                <?php endif; ?>
+            </div>
         </section>
     </div>
 
