@@ -60,9 +60,12 @@ include '../inclusi/nav.php';
                 <p>Compiti in scadenza (7gg)</p>
             </div>
         </div>
+    </div>
 
+    <div class="dashboard-main-griglia">
 
     </div>
+
     
 
 </div>
