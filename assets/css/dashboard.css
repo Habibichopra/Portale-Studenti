@@ -1,3 +1,21 @@
+:root {
+    --colore-primario: #3498db;      /* Blu principale */
+    --colore-secondario: #2c3e50;    /* Blu scuro */
+    --colore-successo: #2ecc71;      /* Verde (Successo/Voti alti) */
+    --colore-allerta: #f1c40f;      /* Giallo (Attenzione) */
+    --colore-pericolo: #e74c3c;       /* Rosso (Errore/Elimina) */
+    
+    --bg-body: #f4f6f9;            /* Grigio chiarissimo per lo sfondo */
+    --bg-scheda: #ffffff;            
+    --testo-main: #333333;
+    --testo-disattivato: #7f8c8d;
+    
+    /* Spaziature e Bordi */
+    --border-radius: 8px;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+}
+
 /* 1.header dashboard */
 
 .dashboard-header h1 {
