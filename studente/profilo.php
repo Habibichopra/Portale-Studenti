@@ -36,6 +36,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'email' => $email,
             'password' => !empty($password) ? $password : null // Se vuota, non cambia
         ];
+
+        if ($userObj->updateProfile($user_id, $data)) {
+            $messaggio = "Profilo aggiornato con successo!";
+            $_SESSION['nome_completo'] = $nome . " " . $cognome;
+        } else {
+            $errore = "errore durante l'aggiornamento. L'email potrebbe essere già in uso.";
+        }
+    }
 }
 
 ?>
