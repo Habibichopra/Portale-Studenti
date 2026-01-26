@@ -13,4 +13,8 @@ $materialeObj = new Materiale();
 
 $miei_corsi = $corsoObj->getCorsiByStudente($studente_id);
 
+$corsi_map = [];
+foreach ($miei_corsi as $c) {
+    $corsi_map[$c['id']] = $c;
+}
 ?>
