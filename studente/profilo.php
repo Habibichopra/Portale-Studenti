@@ -152,11 +152,11 @@ include '../inclusi/nav.php';
                             <i class="fas fa-save"></i> Salva Modifiche
                         </button>
                     </div>
+
+                </form>
             </div>
 
-
         </div>
-
 
     </div>
 
