@@ -59,4 +59,6 @@ usort($lista_da_fare, function($a, $b) {
 usort($lista_storico, function($a, $b) {
     return strtotime($b['data_scadenza']) - strtotime($a['data_scadenza']);
 });
+
+define('PAGE_TITLE', 'I Miei Compiti');
 ?>
