@@ -200,3 +200,71 @@
     margin-top: 15px;
     border-radius: 4px;
 }
+
+
+/*style per le pagine di comunicazione*/
+.message-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+.message-card:hover {
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+    
+.msg-header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    background: #fff;
+}
+
+.msg-header:hover {
+    background: #f9f9f9;
+}
+
+.msg-avatar {
+    width: 45px;
+    height: 45px;
+    background-color: var(--colore-primario);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 15px;
+}
+
+.msg-preview {
+    flex: 1;
+}
+
+.msg-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.sender-name {
+    font-weight: 600;
+    color: var(--colore-secondario);
+}
+
+.msg-date {
+    color: var(--testo-disattivato);
+    font-size: 0.8rem;
+}
+
+.msg-expand-icon {
+    margin-left: 15px;
+    color: #ccc;
+    transition: transform 0.3s;
+}
