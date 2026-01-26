@@ -75,6 +75,19 @@ include '../inclusi/nav.php';
             <h1><i class="fas fa-folder-open"></i> Materiale Didattico</h1>
             <p>Scarica slide, dispense e risorse caricate dai docenti.</p>
         </div>
+
+        <div>
+            <form method="GET" action="materiali.php">
+                <select name="corso_id" onchange="this.form.submit()" class="form-select">
+                    <option value="tutti">📚 Tutti i corsi</option>
+                    <?php foreach ($miei_corsi as $c): ?>
+                        <option value="<?php echo $c['id']; ?>" <?php echo ($corso_selezionato == $c['id']) ? 'selected' : ''; ?>>
+                            <?php echo htmlspecialchars($c['nome_corso']); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </form>
+        </div>
     </header>
 </div>
 <?php include '../inclusi/footer.php'; ?>
