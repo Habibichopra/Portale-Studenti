@@ -91,7 +91,43 @@ include '../inclusi/nav.php';
     </header>
 
     <section>
-        
+        <?php if (count($lista_materiali) > 0): ?>
+            <div class="griglia-materiali">
+                <?php foreach ($lista_materiali as $file): ?>
+                        <div class="scheda-materiali">
+                            <div class="icona-grande-materiale">
+                                <?php echo getIconaMateriale($file['tipo']); ?>
+                            </div>
+                            
+                            <div class="body-materiale">
+                                <span class="avviso-corso"><?php echo htmlspecialchars($file['codice_corso']); ?></span>
+                                <h3><?php echo htmlspecialchars($file['titolo']); ?></h3>
+                                <p class="testo-disattivato">
+                                    <?php echo htmlspecialchars($file['nome_corso']); ?>
+                                </p>
+                                
+                                <?php if (!empty($file['descrizione'])): ?>
+                                    <p>
+                                        <?php echo htmlspecialchars($file['descrizione']); ?>
+                                    </p>
+                                <?php endif; ?>
+
+                                <div>
+                                    <span><?php echo date('d/m/Y', strtotime($file['data_upload'])); ?></span>
+                                    <span><?php echo strtoupper($file['tipo']); ?></span>
+                                </div>
+                            </div>
+
+                            <div class="footer-materiale">
+                                <a href="<?php echo BASE_URL . $file['file_path']; ?>" class="btn btn-contorno btn-blocco" target="_blank">
+                                    <i class="fas fa-download"></i> Scarica / Visualizza
+                                </a>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
     
     </section>
 </div>
