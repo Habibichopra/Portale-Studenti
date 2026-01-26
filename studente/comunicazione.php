@@ -56,4 +56,8 @@ $messaggi = $comunicazioneObj->getComunicazioniByUser($studente_id);
 $professori = $userObj->getAllProfessori();
 $miei_corsi = $corsoObj->getCorsiByStudente($studente_id);
 
+
+define('PAGE_TITLE', 'Comunicazioni');
+include '../inclusi/header.php';
+include '../inclusi/nav.php';
 ?>
