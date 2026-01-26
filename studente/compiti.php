@@ -2,11 +2,11 @@
 require_once '../config/config.php';
 
 $required_ruolo = 'studente';
-require_once '../includes/session_check.php';
+require_once '../inclusi/session_check.php';
 
-require_once '../classes/Corso.php';
-require_once '../classes/Compito.php';
-require_once '../classes/Consegna.php';
+require_once '../classsi/Corso.php';
+require_once '../classsi/Compito.php';
+require_once '../classsi/Consegna.php';
 
 $studente_id = $_SESSION['user_id'];
 
@@ -61,6 +61,10 @@ usort($lista_storico, function($a, $b) {
 });
 
 define('PAGE_TITLE', 'I Miei Compiti');
-include '../includes/header.php';
-include '../includes/nav.php';
+include '../inclusi/header.php';
+include '../inclusi/nav.php';
+?>
+
+<?php 
+include '../inclusi/footer.php'; 
 ?>
