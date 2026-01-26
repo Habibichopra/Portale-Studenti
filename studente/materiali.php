@@ -17,4 +17,8 @@ $corsi_map = [];
 foreach ($miei_corsi as $c) {
     $corsi_map[$c['id']] = $c;
 }
+
+$corso_selezionato = isset($_GET['corso_id']) ? $_GET['corso_id'] : 'tutti';
+
+$lista_materiali = [];
 ?>
