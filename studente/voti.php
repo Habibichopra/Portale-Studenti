@@ -40,6 +40,15 @@ include '../inclusi/nav.php';
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<div class="container layout-contenuto">
+    
+    <header class="header-pagina flex-header">
+        <div>
+            <h1><i class="fas fa-graduation-cap"></i> Libretto Voti</h1>
+            <p>Monitora la tua media e l'andamento dei tuoi esami.</p>
+        </div>
+</div>
+
 
 <?php 
 include '../inclusi/footer.php'; 
