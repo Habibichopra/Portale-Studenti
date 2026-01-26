@@ -68,6 +68,15 @@ include '../inclusi/nav.php';
         <div class="alert alert-errore"><?php echo $errore; ?></div>
     <?php endif; ?>
 
+    <div class="griglia-profilo">
+        <div class="scheda testo-centrato">
+            <div class="body-scheda">
+                
+                
+            </div>
+        </div>
+    </div>
+
 </div>
 
 
