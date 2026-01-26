@@ -70,6 +70,7 @@ include '../inclusi/nav.php';
             </div>
 
             <div class="body-scheda">
+                <?php if (count($compiti_scadenza) > 0): ?>
                     <ul class="lista-task">
                         <?php foreach ($compiti_scadenza as $task): ?>
                             <?php 
