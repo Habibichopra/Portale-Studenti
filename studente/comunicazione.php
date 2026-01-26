@@ -132,9 +132,69 @@ include '../inclusi/nav.php';
             </form>
 
         </div>
-
-
     </div>
+
+    <section class="messaggi-list">
+        <?php if (count($messaggi) > 0): ?>
+            <?php foreach ($messaggi as $msg): ?>
+                <div class="messaggio-card <?php echo ($msg['letto'] == 0) ? 'unread' : ''; ?>">
+                    
+                    <div class="msg-header" onclick="togglemessaggio(<?php echo $msg['id']; ?>)">
+                        <div class="msg-avatar">
+                            <?php 
+                                $initials = substr($msg['nome_mittente'], 0, 1) . substr($msg['cognome_mittente'], 0, 1);
+                                echo strtoupper($initials);
+                            ?>
+                        </div>
+                        <div class="msg-preview">
+                            <div class="msg-top">
+                                <span class="nome-mittente">
+                                    <?php echo htmlspecialchars($msg['nome_mittente'] . ' ' . $msg['cognome_mittente']); ?>
+                                </span>
+                                <span class="msg-data"><?php echo date('d/m/Y H:i', strtotime($msg['data_invio'])); ?></span>
+                            </div>
+                            <div class="msg-contenuto">
+                                <?php if($msg['nome_corso']): ?>
+                                    <span class="etichetta-codice-sm"><?php echo htmlspecialchars($msg['nome_corso']); ?></span>
+                                <?php endif; ?>
+                                <strong><?php echo htmlspecialchars($msg['oggetto']); ?></strong>
+                            </div>
+                        </div>
+                        <div class="msg-ingrandisci-icona">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+
+                    <div class="msg-body" id="msg-body-<?php echo $msg['id']; ?>">
+                        <hr class="separatore-light">
+                        <p><?php echo nl2br(htmlspecialchars($msg['messaggio'])); ?></p>
+                        
+                        <div class="msg-azioni">
+                            <?php if ($msg['letto'] == 0): ?>
+                                <form method="POST" style="display:inline;">
+                                    <input type="hidden" name="action" value="segna_letto">
+                                    <input type="hidden" name="messaggio_id" value="<?php echo $msg['id']; ?>">
+                                    <button type="submit" class="btn btn-contorno btn-sm">
+                                        <i class="fas fa-check-double"></i> Segna come letto
+                                    </button>
+                                </form>
+                            <?php else: ?>
+                                <span class="text-success text-sm"><i class="fas fa-check"></i> Letto</span>
+                            <?php endif; ?>
+
+                            <form method="POST" style="display:inline;" onsubmit="return confirm('Vuoi davvero eliminare questo messaggio?');">
+                                <input type="hidden" name="action" value="elimina">
+                                <input type="hidden" name="messaggio_id" value="<?php echo $msg['id']; ?>">
+                                <button type="submit" class="btn btn-pericolo btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
 
 </div>
 
