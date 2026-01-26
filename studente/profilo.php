@@ -102,6 +102,33 @@ include '../inclusi/nav.php';
             <div class="scheda-header">
                 <h2>Modifica Dati</h2>
             </div>
+            <div class="body-scheda">
+                <form action="profilo.php" method="POST">
+                    <div class="riga">
+                        <div class="colonna-meta">
+                            <div class="gruppo-form">
+                                <label for="nome">Nome</label>
+                                <input type="text" name="nome" id="nome" class="controllo-form" 
+                                       value="<?php echo htmlspecialchars($utente['nome']); ?>" required>
+                            </div>
+                        </div>
+                        <div class="colonna-meta">
+                            <div class="gruppo-form">
+                                <label for="cognome">Cognome</label>
+                                <input type="text" name="cognome" id="cognome" class="controllo-form" 
+                                       value="<?php echo htmlspecialchars($utente['cognome']); ?>" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gruppo-form">
+                        <label for="email">Email Istituzionale</label>
+                        <input type="email" name="email" id="email" class="controllo-form" 
+                               value="<?php echo htmlspecialchars($utente['email']); ?>" required>
+                    </div>
+            </div>
+
+
         </div>
 
 
