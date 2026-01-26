@@ -51,11 +51,18 @@ include '../inclusi/nav.php';
 ?>
 
 <div class="container layout-contenuto">
-    
+
     <header class="header-pagina">
         <h1><i class="fas fa-book-open"></i> I Miei Corsi</h1>
         <p>Gestisci le tue iscrizioni e accedi ai materiali didattici.</p>
     </header>
+
+    <?php if ($messaggio): ?>
+        <div class="alert alert-successo"><?php echo $messaggio; ?></div>
+    <?php endif; ?>
+    <?php if ($errore): ?>
+        <div class="alert alert-errore"><?php echo $errore; ?></div>
+    <?php endif; ?>
 
 </div>
 
