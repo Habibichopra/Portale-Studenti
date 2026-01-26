@@ -79,4 +79,15 @@ include '../inclusi/header.php';
 include '../inclusi/nav.php';
 ?>
 
+<div class="container layout-contenuto">
+    
+    <a href="compiti.php">&larr; Torna ai Compiti</a>
+
+    <div class="layout-diviso">
+        
+        <div>
+            <header>
+            </header>
+
+
 <?php include '../inclusi/footer.php'; ?>
