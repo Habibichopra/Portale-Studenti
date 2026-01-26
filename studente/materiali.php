@@ -10,4 +10,7 @@ require_once '../classi/Materiale.php';
 $studente_id = $_SESSION['user_id'];
 $corsoObj = new Corso();
 $materialeObj = new Materiale();
+
+$miei_corsi = $corsoObj->getCorsiByStudente($studente_id);
+
 ?>
