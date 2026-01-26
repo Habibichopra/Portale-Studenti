@@ -121,3 +121,31 @@ ul {
     gap: 25px;
 }
 
+/* 3 schede e contenitori */
+
+.scheda {
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-);
+    margin-bottom: 25px;
+    overflow: hidden; /* Per i bordi arrotondati */
+}
+
+.scheda-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+}
+
+.scheda-header h2, .scheda-header h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--colore-secondario);
+}
+
+.body-scheda {
+    padding: 20px;
+}
