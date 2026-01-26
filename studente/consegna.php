@@ -33,5 +33,29 @@ foreach ($consegne_studente as $c) {
     }
 }
 
+$messaggio = '';
+$errore = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file_consegna'])) {
+    
+    $data_scadenza = new DateTime($task['data_scadenza']);
+    $adesso = new DateTime();
+    
+    if ($adesso > $data_scadenza) {
+        $errore = "Tempo scaduto! Non puoi più consegnare questo compito.";
+    } elseif ($consegna_esistente) {
+        $errore = "Hai già effettuato una consegna per questo compito.";
+    } else {
+        $note = $_POST['note'] ?? '';
+        $file = $_FILES['file_consegna'];
+
+        if ($consegnaObj->consegnaCompito($compito_id, $studente_id, $file, $note)) {
+            header("Location: consegna.php?id=" . $compito_id . "&success=1");
+            exit;
+        } else {
+            $errore = "errore durante il caricamento. Controlla il formato del file.";
+        }
+    }
+}
 
 ?>
