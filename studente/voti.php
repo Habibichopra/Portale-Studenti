@@ -92,7 +92,61 @@ include '../inclusi/nav.php';
     </div>
 
     <div class="dashboard-main-griglia">
-        
+
+        <section class="scheda larghezza-piena-mobile">
+            <div class="scheda-header">
+                <h2>Elenco Valutazioni</h2>
+            </div>
+            <div class="body-scheda">
+                <?php if (count($lista_voti) > 0): ?>
+                    <div class="tabella-responsive">
+                        <table class="tabella-semplice tabella-hover">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Corso</th>
+                                    <th>Tipo</th>
+                                    <th>Voto</th>
+                                    <th>Note</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($lista_voti as $voto): ?>
+                                    <tr>
+                                        <td><?php echo date('d/m/Y', strtotime($voto['data_voto'])); ?></td>
+                                        <td>
+                                            <strong><?php echo htmlspecialchars($voto['nome_corso']); ?></strong>
+                                            <br>
+                                            <small class="testo-disattivato"><?php echo htmlspecialchars($voto['codice_corso']); ?></small>
+                                        </td>
+                                        <td>
+                                            <?php 
+                                            $icon = 'fas fa-pen';
+                                            if ($voto['tipo_valutazione'] == 'esame') $icon = 'fas fa-university';
+                                            if ($voto['tipo_valutazione'] == 'progetto') $icon = 'fas fa-laptop-code';
+                                            ?>
+                                            <i class="<?php echo $icon; ?> testo-disattivato"></i> 
+                                            <?php echo ucfirst($voto['tipo_valutazione']); ?>
+                                        </td>
+                                        <td>
+                                            <span class="etichetta-voto <?php echo ($voto['voto'] >= 24) ? 'alto' : (($voto['voto'] >= 18) ? 'medio' : 'basso'); ?>">
+                                                <?php echo $voto['voto']; ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <?php if (!empty($voto['note'])): ?>
+                                                <span>
+                                                    <i class="far fa-comment-alt"></i> Note
+                                                </span>
+                                            <?php else: ?>
+                                                <span class="testo-disattivato">-</span>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>      
 
     </div>
 
