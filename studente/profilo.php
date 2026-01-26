@@ -146,6 +146,12 @@ include '../inclusi/nav.php';
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-actions mt-4">
+                        <button type="submit" class="btn btn-primario">
+                            <i class="fas fa-save"></i> Salva Modifiche
+                        </button>
+                    </div>
             </div>
 
 
