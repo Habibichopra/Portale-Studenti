@@ -44,7 +44,17 @@ include '../inclusi/nav.php';
                 <p>Media Generale</p>
             </div>
         </div>
+
+        <div class="scheda-statistiche">
+            <div class="icona-statistiche"><i class="fas fa-book"></i></div>
+            <div class="info-statistiche">
+                <h3><?php echo $num_corsi; ?></h3>
+                <p>Corsi Attivi</p>
+            </div>
+        </div>
+
     </div>
+    
 
 </div>
 
