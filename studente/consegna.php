@@ -58,4 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file_consegna'])) {
     }
 }
 
+if (isset($_GET['success'])) {
+    $messaggio = "Compito consegnato con successo!";
+}
+
 ?>
