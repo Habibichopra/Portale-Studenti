@@ -38,6 +38,8 @@ include '../inclusi/nav.php';
 
 ?>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 <?php 
 include '../inclusi/footer.php'; 
