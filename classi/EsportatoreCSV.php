@@ -53,7 +53,31 @@ class EsportatoreCSV  {
 
     //Metodo per esportare le presenze di un corso specifico in un file CSV
     public function exportPresenze($corso_id) {
+        $query = "SELECT u.matricola, u.cognome, u.nome, u.email, i.data_iscrizione 
+                  FROM iscrizioni i
+                  JOIN users u ON i.studente_id = u.id
+                  WHERE i.corso_id = ? AND i.status = 'attivo'
+                  ORDER BY u.cognome ASC";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $corso_id);
+        $stmt->execute();
 
+        $nomeFile = "elenco_iscritti_corso_" . $corso_id . "_" . time() . ".csv";
+        $file = $this->apriFileCSV($nomeFile);
+
+        fputcsv($file, array('Matricola', 'Cognome', 'Nome', 'Email', 'Data Iscrizione', 'Firma Lezione 1', 'Firma Lezione 2', 'Firma Lezione 3'));
+
+        while ($riga = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $riga = array_values($riga); 
+            $riga[] = "";
+            $riga[] = ""; 
+            $riga[] = ""; 
+            fputcsv($file, $riga);
+        }
+
+        fclose($file);
+        return $nomeFile;
     }
 
     //genera statistcihe corso con csv
