@@ -46,7 +46,14 @@ ul {
     list-style: none;
 }
 
-/* NAVBAR */
+/* Container centrale per limitare la larghezza */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 1. NAVBAR */
 .navbar {
     background-color: var(--colore-secondario);
     color: #fff;
