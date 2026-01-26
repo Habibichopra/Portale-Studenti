@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file_consegna'])) {
 
 if (isset($_GET['success'])) {
     $messaggio = "Compito consegnato con successo!";
-    
+
     $consegne_studente = $consegnaObj->getConsegneByStudente($studente_id);
     foreach ($consegne_studente as $c) {
         if ($c['compito_id'] == $compito_id) {
@@ -69,5 +69,9 @@ if (isset($_GET['success'])) {
         }
     }
 }
+
+$scadenza = new DateTime($task['data_scadenza']);
+$oggi = new DateTime();
+$is_scaduto = ($oggi > $scadenza);
 
 ?>
