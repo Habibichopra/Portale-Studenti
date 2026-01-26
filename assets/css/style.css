@@ -88,7 +88,13 @@ ul {
     margin-bottom: 5px;
 }
 
-
+.flex-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
 
 .griglia-statistiche {
     display: grid;
