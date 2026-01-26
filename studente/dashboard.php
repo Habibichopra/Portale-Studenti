@@ -63,7 +63,17 @@ include '../inclusi/nav.php';
     </div>
 
     <div class="dashboard-main-griglia">
+        <section class="scheda">
+             <div class="scheda-header">
+                <h2><i class="fas fa-clock"></i> In Scadenza</h2>
+                <a href="compiti.php" class="btn-testo">Vedi tutti &rarr;</a>
+            </div>
 
+            <div class="body-scheda">
+                
+            </div>
+
+        </section>
     </div>
 
     
