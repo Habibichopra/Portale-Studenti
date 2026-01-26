@@ -127,8 +127,12 @@ include '../inclusi/nav.php';
                     <?php endforeach; ?>
                 </div>
             </div>
-
-    
+        <?php else: ?>
+            <div class="nessun-contenuto">
+                <i class="fas fa-folder-minus"></i>
+                <p>Nessun materiale trovato per la selezione corrente.</p>
+            </div>
+        <?php endif; ?>
     </section>
 </div>
 <?php include '../inclusi/footer.php'; ?>
