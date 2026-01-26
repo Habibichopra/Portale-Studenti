@@ -125,6 +125,9 @@ include '../inclusi/nav.php';
                 <div class="alert alert-errore"><?php echo $errore; ?></div>
             <?php endif; ?>
 
+            <?php if ($consegna_esistente): ?>
+            <div class="segno-stato <?php echo ($consegna_esistente['stato'] == 'valutato') ? 'stato-valutato' : 'status-pending'; ?>">
+
         </div>
     </div>
 </div>
