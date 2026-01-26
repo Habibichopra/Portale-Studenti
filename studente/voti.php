@@ -56,6 +56,17 @@ include '../inclusi/nav.php';
             </form>
         </div>
     </header>
+
+    <?php if ($download_link): ?>
+        <div class="alert alert-successo">
+            <i class="fas fa-check"></i> File generato con successo! 
+            <a href="<?php echo $download_link; ?>" class="alert-link" download>Clicca qui per scaricare la tua pagella.</a>
+        </div>
+    <?php endif; ?>
+
+
+
+
 </div>
 
 
