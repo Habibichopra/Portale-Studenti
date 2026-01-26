@@ -70,7 +70,41 @@ include '../inclusi/nav.php';
             </div>
 
             <div class="body-scheda">
-                
+                    <ul class="lista-task">
+                        <?php foreach ($compiti_scadenza as $task): ?>
+                            <?php 
+
+                                $scadenza = new DateTime($task['data_scadenza']);
+                                $oggi = new DateTime();
+                                $diff = $oggi->diff($scadenza);
+                                $giorni_mancanti = $diff->days;
+                                $is_urgente = ($giorni_mancanti <= 2);
+                            ?>
+                            <li class="elemento-task <?php echo $is_urgente ? 'contorno-urgente' : ''; ?>">
+                                <div class="task-info">
+                                    <span class="avviso-corso"><?php echo htmlspecialchars($task['codice_corso']); ?></span>
+                                    <h4><?php echo htmlspecialchars($task['titolo']); ?></h4>
+                                    <span class="data-task">
+                                        <i class="far fa-calendar-alt"></i> 
+                                        <?php echo date('d/m/Y H:i', strtotime($task['data_scadenza'])); ?>
+                                        <?php if($is_urgente): ?>
+                                            <span class="avviso-urgente">Scade presto!</span>
+                                        <?php endif; ?>
+                                    </span>
+                                </div>
+                                <div class="azione-task">
+                                    <a href="consegna.php?id=<?php echo $task['id']; ?>" class="btn btn-sm btn-primario">Consegna</a>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php else: ?>
+                    <div class="nessun-contenuto">
+                        <i class="fas fa-mug-hot"></i>
+                        <p>Nessun compito in scadenza. Rilassati!</p>
+                    </div>
+                <?php endif; ?>
+
             </div>
 
         </section>
