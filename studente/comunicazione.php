@@ -50,7 +50,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    
 }
+
+$messaggi = $comunicazioneObj->getComunicazioniByUser($studente_id);
+$professori = $userObj->getAllProfessori();
+$miei_corsi = $corsoObj->getCorsiByStudente($studente_id);
 
 ?>
