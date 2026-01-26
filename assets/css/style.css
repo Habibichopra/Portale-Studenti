@@ -149,3 +149,15 @@ ul {
 .body-scheda {
     padding: 20px;
 }
+
+.nessun-contenuto {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--testo-disattivato);
+}
+
+.nessun-contenuto i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.3;
+}
