@@ -88,6 +88,8 @@ ul {
     margin-bottom: 5px;
 }
 
+
+
 .griglia-statistiche {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -235,3 +237,32 @@ ul {
 .etichetta-voto.alto { background-color: var(--colore-successo); }
 .etichetta-voto.medio { background-color: var(--colore-allerta); color: #333; }
 .etichetta-voto.basso { background-color: var(--colore-pericolo); }
+
+
+/* Utilita e footer*/
+.alert {
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border-left: 4px solid transparent;
+}
+.alert-successo { background: #e8f5e9; color: #1b5e20; border-color: var(--colore-successo); }
+.alert-errore { background: #ffebee; color: #b71c1c; border-color: var(--colore-pericolo); }
+.alert-info { background: #e3f2fd; color: #0d47a1; border-color: var(--colore-primario); }
+
+.testo-disattivato { color: #7f8c8d !important; }
+.testo-pericolo { color: var(--danger-color) !important; }
+.testo-centrato { text-align: center; }
+.mt-3 { margin-top: 1rem; }
+.mb-5 { margin-bottom: 3rem; }
+
+.separatore { border: 0; border-top: 1px solid #eee; margin: 30px 0; }
+
+.footer {
+    background: var(--secondary-color);
+    color: rgba(255,255,255,0.6);
+    padding: 30px 0;
+    margin-top: 50px;
+    font-size: 0.9rem;
+    text-align: center;
+}
