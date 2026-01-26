@@ -73,12 +73,20 @@ include '../inclusi/nav.php';
             <i class="fas fa-pen"></i> Scrivi Messaggio
         </button>
     </header>
+
+    <?php if ($messaggio_feedback): ?>
+        <div class="alert alert-successo"><?php echo $messaggio_feedback; ?></div>
+    <?php endif; ?>
+    <?php if ($errore_feedback): ?>
+        <div class="alert alert-errore"><?php echo $errore_feedback; ?></div>
+    <?php endif; ?>
+
+
 </div>
 
 <script>
-function apriChiudiForm() {
-    
-}
+    function apriChiudiForm() {
+    }
 </script>
 
 <?php include '../inclusi/footer.php'; ?>
