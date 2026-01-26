@@ -163,10 +163,23 @@ include '../inclusi/nav.php';
                 <canvas id="votiChart"></canvas>
             </div>
         </section>
-        
+
     </div>
 </div>
 
+
+<script>
+    <?php
+        $voti_cronologici = array_reverse($lista_voti);
+        $nomi_corsi = [];
+        $voti_conseguiti = [];
+        
+        foreach ($voti_cronologici as $v) {
+            $nomi_corsi[] = substr($v['nome_corso'], 0, 15) . (strlen($v['nome_corso']) > 15 ? '...' : ''); 
+            $voti_conseguiti[] = $v['voto'];
+        }
+    ?>
+</script>
 
 <?php 
 include '../inclusi/footer.php'; 
