@@ -125,7 +125,7 @@ include '../inclusi/nav.php';
                             </div>
                         </div>
                     <?php endforeach; ?>
-                </div>
+            
             </div>
         <?php else: ?>
             <div class="nessun-contenuto">
