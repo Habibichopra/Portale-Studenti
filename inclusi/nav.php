@@ -8,4 +8,9 @@ require_once __DIR__ . '/../config/config.php';
             <i class="fas fa-graduation-cap"></i> Portale-Studenti
         </a>
 
+        <ul>
+            <li><a href="<?php echo BASE_URL; ?>index.php">Home</a></li>
+
+        </ul>
+
 </nav>
