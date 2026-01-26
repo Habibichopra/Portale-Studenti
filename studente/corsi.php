@@ -8,4 +8,9 @@ require_once '../classes/Corso.php';
 
 $corsoObj = new Corso();
 $studente_id = $_SESSION['user_id'];
+
+$messaggio = '';
+$errore = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
