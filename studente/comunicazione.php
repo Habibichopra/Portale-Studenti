@@ -81,11 +81,25 @@ include '../inclusi/nav.php';
         <div class="alert alert-errore"><?php echo $errore_feedback; ?></div>
     <?php endif; ?>
 
+    <div id="newmessaggioForm" class="scheda mb-5" style="display: none;">
+        <div class="scheda-header">
+            <h2>Nuovo Messaggio</h2>
+            <button class="btn-icona" onclick="apriChiudForm()"><i class="fas fa-times"></i></button>
+        </div>
+
+
+    </div>
 
 </div>
 
 <script>
     function apriChiudiForm() {
+    var form = document.getElementById('newmessaggioForm');
+    if (form.style.display === "none") {
+        form.style.display = "block";
+    } else {
+        form.style.display = "none";
+    }
     }
 </script>
 
