@@ -23,5 +23,8 @@ if (!$task) {
     die("Compito non trovato.");
 }
 
+$consegne_studente = $consegnaObj->getConsegneByStudente($studente_id);
+$consegna_esistente = null;
+
 
 ?>
