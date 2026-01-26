@@ -119,6 +119,18 @@ include '../inclusi/nav.php';
                     </div>
                 </div>
 
+                <div class="gruppo-form">
+                    <label>Oggetto *</label>
+                    <input type="text" name="oggetto" class="controllo-form" required placeholder="Es: Richiesta ricevimento">
+                </div>
+                <div class="gruppo-form">
+                    <label>Messaggio *</label>
+                    <textarea name="messaggio" class="controllo-form" rows="5" required placeholder="Scrivi qui il tuo messaggio..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-avvenuto"><i class="fas fa-paper-plane"></i> Invia Messaggio</button>
+            </form>
+
         </div>
 
 
