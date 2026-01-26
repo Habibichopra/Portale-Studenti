@@ -239,6 +239,64 @@ ul {
 .etichetta-voto.basso { background-color: var(--colore-pericolo); }
 
 
+/* style per comonenti specifici */
+.griglia-corsi, .griglia-task, .griglia-materiali {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.scheda-corso, .scheda-task, .scheda-materiali {
+    background: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+    border: 1px solid #eee;
+}
+
+.scheda-corso:hover, .scheda-task:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.header-corso, .task-header {
+    padding: 15px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.body-corso, .task-body, .body-materiale {
+    padding: 15px;
+    flex: 1;
+}
+
+.footer-corso, .task-footer, .footer-materiale {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.scheda-task.border-urgent { border-left: 4px solid var(--colore-pericolo); }
+.avviso-urgente { background: #ffebee; color: #c62828; font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; }
+
+
+.scheda-materiali {
+    flex-direction: row; 
+    align-items: center;
+    padding: 15px;
+}
+.icona-grande-materiale { font-size: 2.5rem; margin-right: 15px; width: 50px; text-align: center; }
+.body-materiale { padding: 0; }
+.footer-materiale { border: none; padding: 0 0 0 15px; }
+
+
 /* Utilita e footer*/
 .alert {
     padding: 15px;
