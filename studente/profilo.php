@@ -59,6 +59,15 @@ include '../inclusi/nav.php';
         <h1><i class="fas fa-user-cog"></i> Profilo Utente</h1>
         <p>Gestisci le tue informazioni personali e di accesso.</p>
     </header>
+
+    <?php if ($messaggio): ?>
+        <div class="alert alert-successo"><?php echo $messaggio; ?></div>
+    <?php endif; ?>
+    
+    <?php if ($errore): ?>
+        <div class="alert alert-errore"><?php echo $errore; ?></div>
+    <?php endif; ?>
+
 </div>
 
 
