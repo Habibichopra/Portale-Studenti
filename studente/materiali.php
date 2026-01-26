@@ -68,4 +68,13 @@ include '../inclusi/header.php';
 include '../inclusi/nav.php';
 ?>
 
+<div class="container layout-contenuto">
+    
+    <header class="header-pagina flex-header">
+        <div>
+            <h1><i class="fas fa-folder-open"></i> Materiale Didattico</h1>
+            <p>Scarica slide, dispense e risorse caricate dai docenti.</p>
+        </div>
+    </header>
+</div>
 <?php include '../inclusi/footer.php'; ?>
