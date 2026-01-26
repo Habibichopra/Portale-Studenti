@@ -63,4 +63,7 @@ function getIconaMateriale($tipo) {
     }
 }
 
+define('PAGE_TITLE', 'Materiale Didattico');
+include '../inclusi/header.php';
+include '../inclusi/nav.php';
 ?>
