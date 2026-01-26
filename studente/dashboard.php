@@ -31,6 +31,11 @@ include '../inclusi/nav.php';
 
 <div class="container">
 
+    <header class="dashboard-header">
+        <h1>Ciao, <?php echo htmlspecialchars($_SESSION['nome_completo']); ?>! 👋</h1>
+        <p class="sottotitolo">Ecco la situazione aggiornata della tua carriera scolastica.</p>
+    </header>
+    
 </div>
 
 <?php include '../inclusi/footer.php'; ?>  
