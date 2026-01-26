@@ -71,7 +71,9 @@ include '../inclusi/nav.php';
     <div class="griglia-profilo">
         <div class="scheda testo-centrato">
             <div class="body-scheda">
-                
+                <div class="avatar-profilo">
+                    <?php echo strtoupper(substr($utente['nome'], 0, 1) . substr($utente['cognome'], 0, 1)); ?>
+                </div>
                 
             </div>
         </div>
