@@ -128,6 +128,22 @@ include '../inclusi/nav.php';
             <?php if ($consegna_esistente): ?>
             <div class="segno-stato <?php echo ($consegna_esistente['stato'] == 'valutato') ? 'stato-valutato' : 'status-pending'; ?>">
 
+            <div>
+                <h2><i class="fas fa-check-circle"></i> Stato: <?php echo ucfirst($consegna_esistente['stato']); ?></h2>
+                <span>Inviato il <?php echo date('d/m/Y H:i', strtotime($consegna_esistente['data_consegna'])); ?></span>
+            </div>
+
+            <div>
+                <p><strong>Il tuo file:</strong></p>
+                <a href="<?php echo BASE_URL . $consegna_esistente['file_consegna']; ?>" target="_blank">
+                    <i class="fas fa-file-alt"></i> Scarica il tuo elaborato
+                </a>
+                
+                <?php if(!empty($consegna_esistente['note_studente'])): ?>
+                    <p class="mt-2"><strong>Le tue note:</strong></p>
+                    <p>"<?php echo htmlspecialchars($consegna_esistente['note_studente']); ?>"</p>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 </div>
