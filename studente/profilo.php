@@ -126,6 +126,26 @@ include '../inclusi/nav.php';
                         <input type="email" name="email" id="email" class="controllo-form" 
                                value="<?php echo htmlspecialchars($utente['email']); ?>" required>
                     </div>
+
+                    <hr class="separatore">
+                    <h3 class="text-sm testo-disattivato mb-3">Cambio Password (Opzionale)</h3>
+
+                    <div class="riga">
+                        <div class="colonna-meta">
+                            <div class="gruppo-form">
+                                <label for="password">Nuova Password</label>
+                                <input type="password" name="password" id="password" class="controllo-form" 
+                                       placeholder="Lascia vuoto per mantenere la vecchia">
+                            </div>
+                        </div>
+                        <div class="colonna-meta">
+                            <div class="gruppo-form">
+                                <label for="conf_password">Conferma Password</label>
+                                <input type="password" name="conf_password" id="conf_password" class="controllo-form" 
+                                       placeholder="Ripeti nuova password">
+                            </div>
+                        </div>
+                    </div>
             </div>
 
 
