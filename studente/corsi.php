@@ -13,4 +13,14 @@ $messaggio = '';
 $errore = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    if (isset($_POST['azione']) && $_POST['azione'] === 'disiscriviti') {
+        $iscrizione_id = $_POST['iscrizione_id'];
+        if ($corsoObj->rimuoviIscrizione($iscrizione_id)) {
+            $messaggio = "Ti sei disiscritto dal corso con successo.";
+        } else {
+            $errore = "errore durante la disiscrizione.";
+        }
+    }
+}
 ?>
