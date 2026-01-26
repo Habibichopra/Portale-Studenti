@@ -16,4 +16,11 @@ $consegnaObj = new Consegna();
 
 $corsi = $corsoObj->getCorsiByStudente($studente_id);
 $tutte_consegne = $consegnaObj->getConsegneByStudente($studente_id);
+
+$mappa_consegne = [];
+foreach ($tutte_consegne as $c) {
+    $mappa_consegne[$c['compito_id']] = $c;
+}
+
+
 ?>
