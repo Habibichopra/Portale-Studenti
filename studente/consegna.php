@@ -87,6 +87,19 @@ include '../inclusi/nav.php';
         
         <div>
             <header>
+                <span class="avviso-corso"><?php echo htmlspecialchars($task['nome_corso']); ?></span>
+                <h1><?php echo htmlspecialchars($task['titolo']); ?></h1>
+                
+                <div class="data-tasks">
+                    <p>
+                        <i class="far fa-calendar-plus"></i> Assegnato: 
+                        <strong><?php echo date('d/m/Y', strtotime($task['data_assegnazione'])); ?></strong>
+                    </p>
+                    <p class="<?php echo $is_scaduto ? 'testo-pericolo' : ''; ?>">
+                        <i class="far fa-clock"></i> Scadenza: 
+                        <strong><?php echo $scadenza->format('d/m/Y H:i'); ?></strong>
+                    </p>
+                </div>
             </header>
 
 
