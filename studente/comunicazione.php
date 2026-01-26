@@ -61,3 +61,5 @@ define('PAGE_TITLE', 'Comunicazioni');
 include '../inclusi/header.php';
 include '../inclusi/nav.php';
 ?>
+
+<?php include '../inclusi/footer.php'; ?>
