@@ -73,7 +73,7 @@ include '../inclusi/nav.php';
             </div>
         </div>
 
-        <div class="scheda-statistiche.verde">
+        <div class="scheda-statistiche verde">
             <div class="icona-statistiche"><i class="fas fa-check-double"></i></div>
             <div class="info-statistiche">
                 <h3><?php echo $esami_superati; ?></h3>
@@ -81,7 +81,7 @@ include '../inclusi/nav.php';
             </div>
         </div>
 
-        <div class="scheda-statistiche.viola">
+        <div class="scheda-statistiche viola">
             <div class="icona-statistiche"><i class="fas fa-list-ol"></i></div>
             <div class="info-statistiche">
                 <h3><?php echo count($lista_voti); ?></h3>
