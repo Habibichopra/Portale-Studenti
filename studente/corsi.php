@@ -64,6 +64,55 @@ include '../inclusi/nav.php';
         <div class="alert alert-errore"><?php echo $errore; ?></div>
     <?php endif; ?>
 
+    <section class="mb-5">
+        <h2>Corsi Attivi</h2>
+        
+        <?php if (count($miei_corsi) > 0): ?>
+            <div class="griglia-corsi">
+                <?php foreach ($miei_corsi as $corso): ?>
+                    <div class="scheda-corso">
+                        <div class="header-corso">
+                            <span class="etichetta-codice"><?php echo htmlspecialchars($corso['codice_corso']); ?></span>
+                            <span class="etichetta-crediti"><?php echo $corso['crediti']; ?> CFU</span>
+                        </div>
+                        
+                        <div class="body-corso">
+                            <h3><?php echo htmlspecialchars($corso['nome_corso']); ?></h3>
+                            <p>
+                                <i class="fas fa-chalkboard-teacher"></i> 
+                                Prof. <?php echo htmlspecialchars($corso['prof_nome'] . ' ' . $corso['prof_cognome']); ?>
+                            </p>
+                            <p>
+                                <?php 
+                                echo substr(htmlspecialchars($corso['descrizione']), 0, 100) . '...'; 
+                                ?>
+                            </p>
+                        </div>
+
+                        <div class="footer-corso">
+                            <a href="materiali.php?corso_id=<?php echo $corso['id']; ?>" class="btn btn-primario btn-sm">
+                                <i class="fas fa-folder-open"></i> Materiali
+                            </a>
+
+                            <form method="POST" action="corsi.php" onsubmit="return confirm('Sei sicuro di voler abbandonare questo corso? Perderai l\'accesso ai compiti.');">
+                                <input type="hidden" name="azione" value="disiscriviti">
+                                <input type="hidden" name="iscrizione_id" value="<?php echo $corso['iscrizione_id']; ?>">
+                                <button type="submit" class="btn btn-pericolo btn-sm btn-icona">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php else: ?>
+            <div class="nessun-contenuto">
+                <i class="fas fa-graduation-cap"></i>
+                <p>Non sei iscritto a nessun corso al momento.</p>
+            </div>
+        <?php endif; ?>
+    </section>
+
 </div>
 
 
