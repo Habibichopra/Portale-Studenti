@@ -28,7 +28,27 @@ class EsportatoreCSV  {
 
     //Genera CSV con i voti di uno studente specifico
     public function exportVotiStudente($studente_id) {
+        $query = "SELECT c.nome_corso, c.codice_corso, v.tipo_valutazione, v.voto, v.data_voto, v.note 
+                  FROM voti v
+                  JOIN corsi c ON v.corso_id = c.id
+                  WHERE v.studente_id = ?
+                  ORDER BY v.data_voto DESC";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $studente_id);
+        $stmt->execute();
+        
+        $nomeFile = "voti_studente_" . $studente_id . "_" . time() . ".csv";
+        $file = $this->apriFileCSV($nomeFile);
 
+        fputcsv($file, array('Corso', 'Codice', 'Tipo', 'Voto', 'Data', 'Note'));
+
+        while ($riga = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            fputcsv($file, $riga);
+        }
+
+        fclose($file);
+        return $nomeFile;
     }
 
     //Metodo per esportare le presenze di un corso specifico in un file CSV
