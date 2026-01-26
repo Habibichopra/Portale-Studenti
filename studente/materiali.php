@@ -52,4 +52,15 @@ if ($corso_selezionato !== 'tutti') {
         return strtotime($b['data_upload']) - strtotime($a['data_upload']);
     });
 }
+
+function getIconaMateriale($tipo) {
+    switch ($tipo) {
+        case 'pdf': return '<i class="fas fa-file-pdf text-danger"></i>';
+        case 'slide': return '<i class="fas fa-file-powerpoint text-warning"></i>';
+        case 'video': return '<i class="fas fa-video text-info"></i>';
+        case 'zip': return '<i class="fas fa-file-archive testo-disattivato"></i>';
+        default: return '<i class="fas fa-file text-primary"></i>';
+    }
+}
+
 ?>
