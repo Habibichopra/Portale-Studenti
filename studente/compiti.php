@@ -55,4 +55,8 @@ foreach ($corsi as $corso) {
 usort($lista_da_fare, function($a, $b) {
     return strtotime($a['data_scadenza']) - strtotime($b['data_scadenza']);
 });
+
+usort($lista_storico, function($a, $b) {
+    return strtotime($b['data_scadenza']) - strtotime($a['data_scadenza']);
+});
 ?>
