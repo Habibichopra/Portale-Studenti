@@ -22,5 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errore = "errore durante la disiscrizione.";
         }
     }
+
+    if (isset($_POST['azione']) && $_POST['azione'] === 'iscriviti') {
+        $corso_id = $_POST['corso_id'];
+        if ($corsoObj->iscriviStudente($studente_id, $corso_id)) {
+            $messaggio = "Iscrizione effettuata! Ora puoi vedere i materiali.";
+        } else {
+            $errore = "Impossibile iscriversi. Forse sei già iscritto?";
+        }
+    }
 }
 ?>
