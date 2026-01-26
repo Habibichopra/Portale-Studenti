@@ -72,7 +72,10 @@ include '../inclusi/nav.php';
         <p>Visualizza le scadenze e invia i tuoi elaborati.</p>
     </header>
 
-    
+    <section class="mb-5">
+
+    </section>
+
 </div>
 
 <?php 
