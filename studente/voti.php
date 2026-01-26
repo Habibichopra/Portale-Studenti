@@ -181,6 +181,75 @@ include '../inclusi/nav.php';
     ?>
 
     const contestoGrafico = document.getElementById('votiChart').getContext('2d');
+    const etichetteCorsi = <?php echo json_encode($nomi_corsi); ?>;
+    const datiVoti = <?php echo json_encode($voti_conseguiti); ?>;
+
+    const graficoAndamento = new Chart(contestoGrafico, {
+        type: 'line',
+        data: {
+            labels: etichetteCorsi, 
+            datasets: [{
+                label: 'Voto Conseguito',
+                data: datiVoti,     
+                borderColor: '#3498db',
+                backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                borderWidth: 2,
+                pointBackgroundColor: '#fff',
+                pointBorderColor: '#2980b9',
+                pointHoverBackgroundColor: '#2980b9',
+                pointHoverBorderColor: '#fff',
+                tension: 0.3, 
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false, 
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            plugins: {
+                legend: {
+                    display: false 
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(contesto) {
+                            let valore = contesto.parsed.y;
+                            if (valore >= 31) {
+                                return 'Voto: 30 e Lode';
+                            }
+                            return 'Voto: ' + valore;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    min: 17, 
+                    max: 32, 
+                    ticks: {
+                        stepSize: 1,
+                        callback: function(valore, indice, valori) {
+                            if (valore === 31) return '30L';
+                            if (valore > 31) return '';
+                            return valore;
+                        }
+                    },
+                    grid: {
+                        color: '#f0f0f0' 
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false 
+                    }
+                }
+            }
+        }
+    });
 </script>
 
 <?php 
