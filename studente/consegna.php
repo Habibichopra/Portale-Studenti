@@ -168,6 +168,12 @@ include '../inclusi/nav.php';
                 </div>
             <?php endif; ?>
         </div>
+
+        <?php elseif ($is_scaduto): ?>
+            <div class="segno-stato stato-scaduto">
+                <h2><i class="fas fa-times-circle"></i> Tempo Scaduto</h2>
+                <p>La data di scadenza per questo compito è passata. Non è più possibile inviare elaborati.</p>
+            </div>
     </div>
 </div>
 
