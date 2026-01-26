@@ -26,6 +26,9 @@ class EsportatoreCSV  {
 
     }
 
+    //Metodo per esportare le presenze di un corso specifico in un file CSV
+    public function exportPresenze($corso_id) {
+
 
 }
 
