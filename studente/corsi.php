@@ -50,5 +50,9 @@ include '../inclusi/header.php';
 include '../inclusi/nav.php';
 ?>
 
+<div class="container layout-contenuto">
+
+</div>
+
 
 <?php include '../inclusi/footer.php'; ?>  
