@@ -5,7 +5,7 @@ require_once '../config/config.php';
 $required_ruolo = 'studente';
 require_once '../inclusi/session_check.php';
 
-require_once '../classu/Compito.php';
+require_once '../classi/Compito.php';
 require_once '../classi/Consegna.php';
 
 if (!isset($_GET['id'])) {
@@ -90,7 +90,7 @@ include '../inclusi/nav.php';
                 <span class="avviso-corso"><?php echo htmlspecialchars($task['nome_corso']); ?></span>
                 <h1><?php echo htmlspecialchars($task['titolo']); ?></h1>
                 
-                <div class="data-tasks">
+                <div class="data-task">
                     <p>
                         <i class="far fa-calendar-plus"></i> Assegnato: 
                         <strong><?php echo date('d/m/Y', strtotime($task['data_assegnazione'])); ?></strong>
@@ -117,6 +117,7 @@ include '../inclusi/nav.php';
         </div>
 
         <div>
+            
             <?php if ($messaggio): ?>
                 <div class="alert alert-successo"><?php echo $messaggio; ?></div>
             <?php endif; ?>
@@ -126,76 +127,78 @@ include '../inclusi/nav.php';
             <?php endif; ?>
 
             <?php if ($consegna_esistente): ?>
-            <div class="segno-stato <?php echo ($consegna_esistente['stato'] == 'valutato') ? 'stato-valutato' : 'status-pending'; ?>">
-
-            <div>
-                <h2><i class="fas fa-check-circle"></i> Stato: <?php echo ucfirst($consegna_esistente['stato']); ?></h2>
-                <span>Inviato il <?php echo date('d/m/Y H:i', strtotime($consegna_esistente['data_consegna'])); ?></span>
-            </div>
-
-            <div>
-                <p><strong>Il tuo file:</strong></p>
-                <a href="<?php echo BASE_URL . $consegna_esistente['file_consegna']; ?>" target="_blank">
-                    <i class="fas fa-file-alt"></i> Scarica il tuo elaborato
-                </a>
-                
-                <?php if(!empty($consegna_esistente['note_studente'])): ?>
-                    <p class="mt-2"><strong>Le tue note:</strong></p>
-                    <p>"<?php echo htmlspecialchars($consegna_esistente['note_studente']); ?>"</p>
-                <?php endif; ?>
-            </div>
-
-            <?php if ($consegna_esistente['voto'] !== null): ?>
-            <div class="sezione-voto">
-                <div class="cerchio-voto">
-                    <?php echo $consegna_esistente['voto']; ?>
-                </div>
-                <div class="info-voto">
-                    <span>su <?php echo $task['punti_max']; ?> punti</span>
-                    <h3>Valutazione Finale</h3>
-                </div>
-            </div>
-
-            <?php if(!empty($consegna_esistente['feedback_professore'])): ?>
-                <div class="sezione-feedback">
-                    <h4><i class="fas fa-comment-dots"></i> Feedback del Docente:</h4>
-                    <p><?php echo nl2br(htmlspecialchars($consegna_esistente['feedback_professore'])); ?></p>
-                </div>
-            <?php endif; ?>
-            <?php else: ?>
-                <div class="alert alert-info mt-3">
-                    Il docente non ha ancora valutato il tuo compito.
-                </div>
-            <?php endif; ?>
-        </div>
-
-        <?php elseif ($is_scaduto): ?>
-            <div class="segno-stato stato-scaduto">
-                <h2><i class="fas fa-times-circle"></i> Tempo Scaduto</h2>
-                <p>La data di scadenza per questo compito è passata. Non è più possibile inviare elaborati.</p>
-            </div>
-
-        <?php else: ?>
-            <div>
-                <h2><i class="fas fa-cloud-upload-alt"></i> Effettua Consegna</h2>
-                <p class="mb-3">Carica il tuo file entro il <strong><?php echo $scadenza->format('d/m/Y H:i'); ?></strong>.</p>
-                
-                <form action="consegna.php?id=<?php echo $compito_id; ?>" method="POST" enctype="multipart/form-data">
+                <div class="segno-stato <?php echo ($consegna_esistente['stato'] == 'valutato') ? 'stato-valutato' : 'status-attesa'; ?>">
                     
-                    <div class="gruppo-form">
-                        <label for="file_consegna">Seleziona File (PDF, DOC, ZIP - Max 10MB)</label>
-                        <input type="file" name="file_consegna" id="file_consegna" required class="controllo-form-file">
+                    <div>
+                        <h2><i class="fas fa-check-circle"></i> Stato: <?php echo ucfirst($consegna_esistente['stato']); ?></h2>
+                        <span>Inviato il <?php echo date('d/m/Y H:i', strtotime($consegna_esistente['data_consegna'])); ?></span>
                     </div>
 
-                    <div class="gruppo-form">
-                        <label for="note">Note per il docente (opzionale)</label>
-                        <textarea name="note" id="note" rows="4" class="controllo-form" placeholder="Scrivi qui eventuali commenti..."></textarea>
+                    <div>
+                        <p><strong>Il tuo file:</strong></p>
+                        <a href="<?php echo BASE_URL . $consegna_esistente['file_consegna']; ?>" target="_blank">
+                            <i class="fas fa-file-alt"></i> Scarica il tuo elaborato
+                        </a>
+                        
+                        <?php if(!empty($consegna_esistente['note_studente'])): ?>
+                            <p class="mt-2"><strong>Le tue note:</strong></p>
+                            <p>"<?php echo htmlspecialchars($consegna_esistente['note_studente']); ?>"</p>
+                        <?php endif; ?>
                     </div>
 
-                    <button type="submit" class="btn btn-avvenuto btn-blocco">Invia Compito</button>
-                </form>
-            </div>
-        <?php endif; ?>
+                    <?php if ($consegna_esistente['voto'] !== null): ?>
+                        <div class="sezione-voto">
+                            <div class="cerchio-voto">
+                                <?php echo $consegna_esistente['voto']; ?>
+                            </div>
+                            <div class="info-voto">
+                                <span>su <?php echo $task['punti_max']; ?> punti</span>
+                                <h3>Valutazione Finale</h3>
+                            </div>
+                        </div>
+                        
+                        <?php if(!empty($consegna_esistente['feedback_professore'])): ?>
+                            <div class="sezione-feedback">
+                                <h4><i class="fas fa-comment-dots"></i> Feedback del Docente:</h4>
+                                <p><?php echo nl2br(htmlspecialchars($consegna_esistente['feedback_professore'])); ?></p>
+                            </div>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <div class="alert alert-info mt-3">
+                            Il docente non ha ancora valutato il tuo compito.
+                        </div>
+                    <?php endif; ?>
+
+                </div>
+
+            <?php elseif ($is_scaduto): ?>
+                <div class="segno-stato stato-scaduto">
+                    <h2><i class="fas fa-times-circle"></i> Tempo Scaduto</h2>
+                    <p>La data di scadenza per questo compito è passata. Non è più possibile inviare elaborati.</p>
+                </div>
+
+            <?php else: ?>
+                <div>
+                    <h2><i class="fas fa-cloud-upload-alt"></i> Effettua Consegna</h2>
+                    <p class="mb-3">Carica il tuo file entro il <strong><?php echo $scadenza->format('d/m/Y H:i'); ?></strong>.</p>
+                    
+                    <form action="consegna.php?id=<?php echo $compito_id; ?>" method="POST" enctype="multipart/form-data">
+                        
+                        <div class="gruppo-form">
+                            <label for="file_consegna">Seleziona File (PDF, DOC, ZIP - Max 10MB)</label>
+                            <input type="file" name="file_consegna" id="file_consegna" required class="controllo-form-file">
+                        </div>
+
+                        <div class="gruppo-form">
+                            <label for="note">Note per il docente (opzionale)</label>
+                            <textarea name="note" id="note" rows="4" class="controllo-form" placeholder="Scrivi qui eventuali commenti..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-avvenuto btn-blocco">Invia Compito</button>
+                    </form>
+                </div>
+            <?php endif; ?>
+
         </div>
     </div>
 </div>
