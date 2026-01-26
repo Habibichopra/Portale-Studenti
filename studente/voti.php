@@ -25,4 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['export_csv'])) {
 $lista_voti = $votoObj->getVotiByStudente($studente_id);
 $media_totale = $votoObj->calcolaMedia($studente_id);
 
+$esami_superati = 0;
+foreach ($lista_voti as $v) {
+    if ($v['voto'] >= 18) {
+        $esami_superati++;
+    }
+}
+
 ?>
