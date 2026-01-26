@@ -203,7 +203,7 @@
 
 
 /*style per le pagine di comunicazione*/
-.message-card {
+.messaggio-card {
     background: #fff;
     border: 1px solid #eee;
     border-radius: 8px;
@@ -212,10 +212,10 @@
     transition: all 0.2s;
 }
 
-.message-card:hover {
+.messaggio-card:hover {
     box-shadow: 0 3px 10px rgba(0,0,0,0.05);
 }
-    
+
 .msg-header {
     display: flex;
     align-items: center;
@@ -253,18 +253,61 @@
     font-size: 0.9rem;
 }
 
-.sender-name {
+.nome-mittente {
     font-weight: 600;
     color: var(--colore-secondario);
 }
 
-.msg-date {
+.msg-data {
     color: var(--testo-disattivato);
     font-size: 0.8rem;
 }
-
-.msg-expand-icon {
+.msg-ingrandisci-icona {
     margin-left: 15px;
     color: #ccc;
     transition: transform 0.3s;
+}
+
+.messaggio-card.expanded .msg-ingrandisci-icona {
+    transform: rotate(180deg);
+}
+
+.msg-body {
+    display: none;
+    padding: 15px;
+    border-top: 1px solid #eee;
+    background-color: #fafafa;
+}
+
+.msg-azioni {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.unread .msg-header {
+    font-weight: bold;
+}
+
+.etichetta-codice-sm {
+    display: inline-block;
+    background-color: rgba(52, 152, 219, 0.15);
+    color: #3498db;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    margin-right: 5px;
+}
+
+.nessun-contenuto {
+    text-align: center;
+    padding: 50px 0;
+    color: var(--testo-disattivato);
+}
+
+.nessun-contenuto i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: block;
 }
