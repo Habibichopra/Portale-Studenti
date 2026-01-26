@@ -32,4 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
+$miei_corsi = $corsoObj->getCorsiByStudente($studente_id);
 ?>
