@@ -65,7 +65,13 @@ include '../inclusi/nav.php';
     <?php endif; ?>
     
     <div class="griglia-statistiche mb-5">
-
+        <div class="scheda-statistiche">
+            <div class="icona-statistiche"><i class="fas fa-calculator"></i></div>
+            <div class="info-statistiche">
+                <h3><?php echo $media_totale; ?></h3>
+                <p>Media Aritmetica</p>
+            </div>
+        </div>
     </div>
 
 
