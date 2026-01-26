@@ -22,5 +22,6 @@ foreach ($tutte_consegne as $c) {
     $mappa_consegne[$c['compito_id']] = $c;
 }
 
-
+$lista_da_fare = [];
+$lista_storico = [];
 ?>
