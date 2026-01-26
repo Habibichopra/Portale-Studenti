@@ -18,5 +18,10 @@ $studente_id = $_SESSION['user_id'];
 $compitoObj = new Compito();
 $consegnaObj = new Consegna();
 
+$task = $compitoObj->getCompitoById($compito_id);
+if (!$task) {
+    die("Compito non trovato.");
+}
+
 
 ?>
