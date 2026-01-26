@@ -114,3 +114,10 @@ ul {
     font-size: 0.9rem;
     color: var(--testo-disattivato);
 }
+
+.dashboard-main-griglia {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+}
+
