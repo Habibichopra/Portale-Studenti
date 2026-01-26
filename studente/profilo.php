@@ -94,10 +94,17 @@ include '../inclusi/nav.php';
                         <span class="value"><?php echo date('d/m/Y', strtotime($utente['creato_il'])); ?></span>
                     </div>
                 </div>
-
-                
             </div>
         </div>
+
+
+        <div class="scheda">
+            <div class="scheda-header">
+                <h2>Modifica Dati</h2>
+            </div>
+        </div>
+
+
     </div>
 
 </div>
