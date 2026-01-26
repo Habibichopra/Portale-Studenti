@@ -61,4 +61,6 @@ usort($lista_storico, function($a, $b) {
 });
 
 define('PAGE_TITLE', 'I Miei Compiti');
+include '../includes/header.php';
+include '../includes/nav.php';
 ?>
