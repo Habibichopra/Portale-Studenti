@@ -115,6 +115,54 @@ include '../inclusi/nav.php';
 
     <hr class="separatore">
 
+    <section>
+        <h2>Catalogo Corsi Disponibili</h2>
+        <p class="testo-disattivato mb-3">Iscriviti a nuovi corsi per visualizzare materiali e compiti.</p>
+
+        <?php if (count($corsi_disponibili) > 0): ?>
+            <div class="tabella-responsive">
+                <table class="tabella-semplice tabella-hover">
+                    <thead>
+                        <tr>
+                            <th>Codice</th>
+                            <th>Corso</th>
+                            <th>Professore</th>
+                            <th>Anno</th>
+                            <th>Crediti</th>
+                            <th>Azione</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($corsi_disponibili as $corso): ?>
+                            <tr>
+                                <td><strong><?php echo htmlspecialchars($corso['codice_corso']); ?></strong></td>
+                                <td>
+                                    <?php echo htmlspecialchars($corso['nome_corso']); ?>
+                                    <br>
+                                    <small class="testo-disattivato"><?php echo substr($corso['descrizione'], 0, 50); ?>...</small>
+                                </td>
+                                <td><?php echo htmlspecialchars($corso['prof_nome'] . ' ' . $corso['prof_cognome']); ?></td>
+                                <td><?php echo htmlspecialchars($corso['anno_accademico']); ?></td>
+                                <td><?php echo $corso['crediti']; ?></td>
+                                <td>
+                                    <form method="POST" action="corsi.php">
+                                        <input type="hidden" name="azione" value="iscriviti">
+                                        <input type="hidden" name="corso_id" value="<?php echo $corso['id']; ?>">
+                                        <button type="submit" class="btn btn-contorno btn-sm">
+                                            <i class="fas fa-plus"></i> Iscriviti
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php else: ?>
+            <p class="testo-centrato">Non ci sono altri corsi disponibili a cui iscriversi.</p>
+        <?php endif; ?>
+    </section>
+
 </div>
 
 
