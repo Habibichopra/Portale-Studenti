@@ -72,6 +72,16 @@ include '../inclusi/nav.php';
                 <p>Media Aritmetica</p>
             </div>
         </div>
+
+        <div class="scheda-statistiche.verde">
+            <div class="icona-statistiche"><i class="fas fa-check-double"></i></div>
+            <div class="info-statistiche">
+                <h3><?php echo $esami_superati; ?></h3>
+                <p>Esami Superati</p>
+            </div>
+        </div>
+
+        
     </div>
 
 
