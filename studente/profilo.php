@@ -74,6 +74,9 @@ include '../inclusi/nav.php';
                 <div class="avatar-profilo">
                     <?php echo strtoupper(substr($utente['nome'], 0, 1) . substr($utente['cognome'], 0, 1)); ?>
                 </div>
+
+                <h2 class="mt-3"><?php echo htmlspecialchars($utente['nome'] . ' ' . $utente['cognome']); ?></h2>
+                <p class="testo-disattivato">Studente</p>
                 
             </div>
         </div>
