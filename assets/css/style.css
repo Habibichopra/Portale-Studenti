@@ -393,6 +393,17 @@ ul {
 .alert-errore { background: #ffebee; color: #b71c1c; border-color: var(--colore-pericolo); }
 .alert-info { background: #e3f2fd; color: #0d47a1; border-color: var(--colore-primario); }
 
+.alert-link {
+    font-weight: 600;
+    text-decoration: underline;
+    color: inherit; /* prende il colore dell’alert */
+}
+
+.alert-link:hover {
+    text-decoration: none;
+    opacity: 0.85;
+}
+
 .testo-disattivato { color: #7f8c8d !important; }
 .testo-pericolo { color: var(--danger-color) !important; }
 .testo-centrato { text-align: center; }
