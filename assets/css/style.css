@@ -84,9 +84,17 @@ ul {
 
 .header-pagina h1 {
     font-size: 2rem;
-    color: var(--secondary-color);
+    color: var(--colore-secondario);
     margin-bottom: 5px;
 }
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end; /* pulsanti a destra */
+    gap: 10px;
+    margin-top: 30px;
+}
+
 
 .flex-header {
     display: flex;
@@ -405,7 +413,7 @@ ul {
 }
 
 .testo-disattivato { color: #7f8c8d !important; }
-.testo-pericolo { color: var(--danger-color) !important; }
+.testo-pericolo { color: var(--colore-pericolo) !important; }
 .testo-centrato { text-align: center; }
 .mt-3 { margin-top: 1rem; }
 .mb-5 { margin-bottom: 3rem; }
@@ -413,7 +421,7 @@ ul {
 .separatore { border: 0; border-top: 1px solid #eee; margin: 30px 0; }
 
 .footer {
-    background: var(--secondary-color);
+    background: var(--colore-secondario);
     color: rgba(255,255,255,0.6);
     padding: 30px 0;
     margin-top: 50px;
