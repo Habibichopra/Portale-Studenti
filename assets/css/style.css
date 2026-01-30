@@ -584,3 +584,10 @@ textarea.controllo-form {
 .testo-destra {
     text-align: right;
 }
+
+
+/* Piccola aggiunta CSS per la lista attività */
+.lista-attivita { list-style: none; padding: 0; }
+.oggetto-attivita { display: flex; align-items: flex-start; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+.icona-attivita { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-right: 10px; font-size: 12px; }
+.bg-successo { background-color: #2ecc71; }
