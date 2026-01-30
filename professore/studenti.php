@@ -10,7 +10,7 @@ require_once '../classi/CSVExporter.php';
 
 $prof_id = $_SESSION['user_id'];
 $corsoObj = new Corso();
-$csvExporter = new CSVExporter();
+$csvExporter = new EsportatoreCSV();
 
 $database = Database::getInstance();
 $db = $database->getConnection();
