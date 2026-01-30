@@ -199,7 +199,7 @@ include '../inclusi/nav.php';
                                     <button type="submit" class="btn btn-contorno btn-">Segna come letto</button>
                                 </form>
                             <?php else: ?>
-                                <span class="text-success text-"><i class="fas fa-check"></i> Letto</span>
+                                <span class="testp-successo text-"><i class="fas fa-check"></i> Letto</span>
                             <?php endif; ?>
 
                             <button class="btn btn-primario btn-" onclick="preparaRisposta('<?php echo $msg['mittente_id']; ?>', 'Re: <?php echo addslashes($msg['oggetto']); ?>', '<?php echo $msg['corso_id']; ?>')">
