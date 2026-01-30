@@ -6,7 +6,7 @@ require_once '../inclusi/session_check.php';
 
 require_once '../classi/Corso.php';
 require_once '../classi/User.php'; 
-require_once '../classi/CSVExporter.php';
+require_once '../classi/EsportatoreCSV.php';
 
 $prof_id = $_SESSION['user_id'];
 $corsoObj = new Corso();
