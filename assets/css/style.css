@@ -292,6 +292,37 @@ ul {
 }
 .btn-testo:hover { text-decoration: underline; }
 
+.btn-azione {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 14px;
+    background-color: #2d89ef; /* blu azione */
+    color: #fff;
+    text-decoration: none;
+
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-azione i {
+    font-size: 15px;
+}
+
+.btn-azione:hover {
+    background-color: #1b5fbf;
+    transform: translateY(-1px);
+}
+
+.btn-azione:active {
+    transform: translateY(0);
+}
+
+
 
 /* style per comonenti specifici */
 .griglia-corsi, .griglia-task, .griglia-materiali {
