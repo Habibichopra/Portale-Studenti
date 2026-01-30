@@ -379,6 +379,8 @@
     border-top: 1px solid #eee;
 }
 
+.riga-warning-light { background-color: #fff8e1; }
+
 /* Animazioni per il Modal */
 @keyframes fadeIn {
     from { opacity: 0; }
