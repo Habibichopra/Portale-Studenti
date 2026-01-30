@@ -422,6 +422,56 @@ ul {
 }
 
 
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+}
+
+.gruppo-form {
+    margin-bottom: 20px;
+}
+
+.gruppo-form etichetta {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+.controllo-form {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.controllo-form:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+textarea.controllo-form {
+    resize: vertical;
+}
+
+.riga {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.colonna-meta {
+    flex: 1;
+}
+
 @media (max-width: 768px) {
     
     /* Griglie diventano colonna singola */
