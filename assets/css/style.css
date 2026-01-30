@@ -414,6 +414,8 @@ ul {
 
 .testo-disattivato { color: #7f8c8d !important; }
 .testo-pericolo { color: var(--colore-pericolo) !important; }
+.testo-successo { color: var(--colore-successo) !important; }
+
 .testo-centrato { text-align: center; }
 .mt-3 { margin-top: 1rem; }
 .mb-5 { margin-bottom: 3rem; }
