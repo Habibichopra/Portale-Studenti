@@ -591,3 +591,12 @@ textarea.controllo-form {
 .oggetto-attivita { display: flex; align-items: flex-start; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
 .icona-attivita { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-right: 10px; font-size: 12px; }
 .bg-successo { background-color: #2ecc71; }
+
+.file-list { list-style: none; padding: 0; }
+.file-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #eee; }
+.file-icon { width: 40px; font-size: 20px; color: #555; text-align: center; }
+.file-info { flex-grow: 1; padding: 0 10px; }
+.file-actions { display: flex; gap: 10px; }
+.btn-icona { background: none; border: none; cursor: pointer; font-size: 16px; padding: 5px; }
+.text-primary { color: #3498db; }
+.testo-pericolo { color: #e74c3c; }
