@@ -790,7 +790,7 @@ textarea.controllo-form {
 }
 
 .feature-card p {
-    color: #f9f9f9;
+    color: #333333;
     line-height: 1.6;
 }
 
@@ -798,14 +798,14 @@ textarea.controllo-form {
    3. INFO SECTION (Split Layout)
    ========================================= */
 .info-section {
-    padding: 100px 0;
+    padding: 69px 0;
     background-color: white;
 }
 
 .info-container {
     display: flex;
     align-items: center;
-    gap: 50px; /* Spazio tra testo e immagine */
+    gap: 30px; /* Spazio tra testo e immagine */
 }
 
 .info-text {
@@ -820,7 +820,7 @@ textarea.controllo-form {
 
 .info-text p {
     font-size: 1.1rem;
-    color: #f9f9f9;
+    color: #333333;
     line-height: 1.7;
     margin-bottom: 20px;
 }

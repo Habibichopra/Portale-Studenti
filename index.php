@@ -38,29 +38,29 @@ include 'inclusi/nav.php';
 <section class="features">
     <div class="container">
         <h2>Cosa puoi fare?</h2>
+        <br>
         <div class="features-grid">
             
             <div class="feature-card">
-                <div class="logo">📚</div>
-                <h3>I tuoi Corsi</h3>
+                <h3>📚 I tuoi Corsi</h3>
                 <p>Accedi a tutto il materiale didattico, slide e videolezioni caricate dai tuoi professori.</p>
             </div>
 
             <div class="feature-card">
-                <div class="logo">📝</div>
-                <h3>Compiti e Esami</h3>
+                <h3>📝 Compiti e Esami</h3>
                 <p>Visualizza le scadenze, invia i tuoi compiti online e ricevi feedback dettagliati.</p>
             </div>
 
             <div class="feature-card">
-                <div class="logo">🏆</div>
-                <h3>Libretto Online</h3>
+                <h3>🏆 Libretto Online</h3>
                 <p>Tieni traccia della tua media voti e scarica la tua pagella in qualsiasi momento.</p>
             </div>
 
         </div>
     </div>
 </section>
+
+<br> <br>
 
 <section class="info-section">
     <div class="container">

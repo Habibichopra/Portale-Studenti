@@ -52,7 +52,7 @@ include 'inclusi/nav.php';
 
         <form action="register.php" method="POST">
             <div class="riga">
-                <div class="colonna-meta>
+                <div class="colonna-meta">
                     <div class="gruppo-form">
                         <label>Nome</label>
                         <input type="text" name="nome" required class="controllo-form">
