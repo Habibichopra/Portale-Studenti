@@ -24,9 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $user = new User();
         if ($user->registra($username, $password, $email, $nome, $cognome, $ruolo, $matricola)) {
-            $message = "Registrazione avvenuta con successo! <a href='login.php'>Accedi ora</a>.";
+            $messaggio = "Registrazione avvenuta con successo! <a href='login.php'>Accedi ora</a>.";
         } else {
-            $error = "Errore durante la registrazione. Username o Email potrebbero essere già in uso.";
+            $errore = "Errore durante la registrazione. Username o Email potrebbero essere già in uso.";
         }
     }
 }
@@ -42,12 +42,12 @@ include 'inclusi/nav.php';
     <div class="form-container">
         <h2>Crea un Account</h2>
 
-        <?php if($message): ?>
-            <div class="alert alert-successo"><?php echo $message; ?></div>
+        <?php if($messaggio): ?>
+            <div class="alert alert-successo"><?php echo $messaggio; ?></div>
         <?php endif; ?>
         
-        <?php if($error): ?>
-            <div class="alert alert-erroro"><?php echo $error; ?></div>
+        <?php if($errore): ?>
+            <div class="alert alert-erroro"><?php echo $errore; ?></div>
         <?php endif; ?>
 
         <form action="register.php" method="POST">

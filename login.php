@@ -49,8 +49,8 @@ include 'inclusi/nav.php';
     <div class="form-container">
         <h2>Accedi al Portale</h2>
         
-        <?php if($error): ?>
-            <div class="alert alert-errore"><?php echo $error; ?></div>
+        <?php if($errore): ?>
+            <div class="alert alert-errore"><?php echo $errore; ?></div>
         <?php endif; ?>
 
         <form action="login.php" method="POST">
@@ -73,4 +73,4 @@ include 'inclusi/nav.php';
     </div>
 </div>
 
-<?php include 'inclui/footer.php'; ?>
+<?php include 'inclusi/footer.php'; ?>
