@@ -46,6 +46,10 @@ ul {
     list-style: none;
 }
 
+.contenitore-principale {
+    flex: 1;
+}
+
 /* Container centrale per limitare la larghezza */
 .container {
     max-width: 1200px;
@@ -64,6 +68,12 @@ ul {
     box-shadow: var(--shadow-md);
 }
 
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
@@ -71,6 +81,31 @@ ul {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Menu Utente (Nome in alto a destra) */
+.user-menu {
+    border-left: 1px solid rgba(255,255,255,0.2);
+    padding-left: 20px;
+    margin-left: 10px;
 }
 
 /* 2 dashboard e griglie e layout */
@@ -330,6 +365,33 @@ ul {
     transform: translateY(0);
 }
 
+/* --- TASTO REGISTER (Positivo/Verde) --- */
+.btn-register {
+    background-color: #2ecc71 !important; /* Verde Smeraldo */
+    color: white !important;              /* Testo bianco */
+    padding: 5px 15px !important;
+    font-size: 0.9rem;
+    font-weight: 600;                     /* Leggermente più spesso */
+    border: none;
+}
+
+.btn-register:hover {
+    background-color: #27ae60 !important; /* Verde più scuro al passaggio */
+    transform: translateY(-1px);          /* Piccolo effetto sollevamento (opzionale) */
+}
+
+/* --- TASTO LOGOUT (Attenzione/Rosso) --- */
+.btn-logout {
+    background-color: var(--colore-pericolo); /* Usa la tua variabile rossa */
+    color: white !important;
+    padding: 5px 15px !important;
+    font-size: 0.9rem;
+    border: none;
+}
+
+.btn-logout:hover {
+    background-color: #c0392b !important; /* Rosso scuro */
+}
 
 
 /* style per comonenti specifici */
@@ -483,7 +545,21 @@ textarea.controllo-form {
 }
 
 @media (max-width: 768px) {
+        /* Navbar diventa hamburger */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: var(--colore-secondario);
+        padding: 20px;
+    }
     
+    .nav-links.active { display: flex; }
+    
+    .hamburger { display: flex; }
     /* Griglie diventano colonna singola */
     .dashboard-main-griglia, .layout-diviso {
         grid-template-columns: 1fr;
@@ -605,3 +681,175 @@ textarea.controllo-form {
 .messaggio-card.expanded .fas.fa-chevron-down { transform: rotate(180deg); }
 .messaggio-card.unread { border-left: 4px solid #3498db; background-color: #f0f7ff; }
 .badge-ruolo { background: #eee; font-size: 0.7em; padding: 2px 5px; border-radius: 4px; color: #555; margin-left: 5px; vertical-align: middle; }
+
+
+
+:root {
+    --primary: #3498db;      /* Blu principale */
+    --primary-dark: #2980b9; /* Blu scuro per hover */
+    --text-dark: #333333;    /* Testo scuro */
+    --text-light: #666666;   /* Testo grigio */
+    --bg-light: #f9f9f9;     /* Sfondo grigio chiaro */
+    --white: #ffffff;
+}
+
+/* Container generale per centrare il contenuto */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* =========================================
+   1. HERO SECTION
+   ========================================= */
+.hero-section {
+    background: linear-gradient(135deg, #3498db 0%, #8e44ad 100%); /* Gradiente moderno */
+    color: #ffffff;
+    padding: 100px 0;
+    text-align: center;
+    /* Centratura verticale se vuoi la hero a tutto schermo */
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-hero {
+    background-color: var(#ffffff);
+    color: var(--primary);
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-hero:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* =========================================
+   2. FEATURES SECTION
+   ========================================= */
+.features-section {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.features-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color:#333333 ;
+}
+
+/* Grid Layout per le card */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsivo automatico */
+    gap: 30px;
+}
+
+.feature-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px); /* Effetto "galleggiamento" */
+}
+
+.feature-card h3 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #333333;
+}
+
+.feature-card p {
+    color: #f9f9f9;
+    line-height: 1.6;
+}
+
+/* =========================================
+   3. INFO SECTION (Split Layout)
+   ========================================= */
+.info-section {
+    padding: 100px 0;
+    background-color: white;
+}
+
+.info-container {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Spazio tra testo e immagine */
+}
+
+.info-text {
+    flex: 1; /* Prende il 50% dello spazio */
+}
+
+.info-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.info-text p {
+    font-size: 1.1rem;
+    color: #f9f9f9;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.info-image {
+    flex: 1; /* Prende il 50% dello spazio */
+}
+
+.info-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* =========================================
+   RESPONSIVE (Mobile)
+   ========================================= */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+    
+    .info-container {
+        flex-direction: column; /* Impila testo e immagine su mobile */
+        text-align: center;
+    }
+    
+    .info-text, .info-image {
+        flex: auto;
+        width: 100%;
+    }
+}
