@@ -7,17 +7,29 @@ require_once '../inclusi/session_check.php';
 require_once '../classi/Corso.php';
 require_once '../classi/Compito.php';
 require_once '../classi/Consegna.php';
+require_once '../classi/Comunicazione.php';
+
 
 $prof_id = $_SESSION['user_id'];
 
 $corsoObj = new Corso();
 $compitoObj = new Compito();
 $consegnaObj = new Consegna();
+$comunicazioneObj = new Comunicazione();
+
 
 $miei_corsi = $corsoObj->getCorsiByProfessore($prof_id);
 
 $totale_da_correggere = 0;
 $totale_studenti_iscritti = 0; 
+
+$messaggi_non_letti = 0;
+$tutti_messaggi = $comunicazioneObj->getComunicazioniByUser($prof_id);
+foreach($tutti_messaggi as $msg) {
+    if($msg['letto'] == 0) {
+        $messaggi_non_letti++;
+    }
+}
 
 
 foreach ($miei_corsi as &$corso) {
@@ -73,10 +85,10 @@ include '../inclusi/nav.php';
             </div>
         </div>
 
-        <div class="scheda-statistiche purple">
+        <div class="scheda-statistiche viola">
             <div class="icona-statistiche"><i class="fas fa-envelope"></i></div>
             <div class="info-statistiche">
-                <h3>-</h3>
+                <h3><?php echo $messaggi_non_letti; ?></h3>
                 <p>Nuovi Messaggi</p>
             </div>
             <a href="comunicazioni.php" class="card-link">Vedi</a>

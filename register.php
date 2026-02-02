@@ -84,7 +84,7 @@ include 'inclusi/nav.php';
 
             <div class="gruppo-form">
                 <label>Ruolo</label>
-                <select name="role" id="role-select" class="controllo-form" onchange="toggleMatricola()">
+                <select name="ruolo" id="role-select" class="controllo-form" onchange="toggleMatricola()">
                     <option value="studente">Studente</option>
                     <option value="professore">Professore</option>
                 </select>

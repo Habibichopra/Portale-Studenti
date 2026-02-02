@@ -1,6 +1,6 @@
 <?php
 require_once 'config/config.php';
-require_once 'classes/User.php';
+require_once 'classi/User.php';
 
 $user = new User();
 $user->logout();
