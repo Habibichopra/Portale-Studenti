@@ -853,3 +853,46 @@ textarea.controllo-form {
         width: 100%;
     }
 }
+
+.admin-badge { background-color: #2c3e50; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.9em; }
+
+.scheda-azione-admin {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.scheda-azione {
+    display: block;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.scheda-azione:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-color: #3498db;
+}
+
+.scheda-azione .icona {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #3498db;
+}
+
+.scheda-azione.evidenzia .icona { color: #2ecc71; }
+
+.scheda-azione h3 { margin: 10px 0; font-size: 1.1rem; }
+.scheda-azione p { font-size: 0.85rem; color: #666; margin: 0; }
+
+.badge-ruolo { padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
+.badge-ruolo.studente { background-color: #e1f5fe; color: #0288d1; }
+.badge-ruolo.prof { background-color: #e8f5e9; color: #388e3c; }
+
+.table-sm td, .table-sm th { padding: 8px; font-size: 0.9rem; }
