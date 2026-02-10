@@ -6,12 +6,14 @@ require_once '../inclusi/session_check.php';
 
 require_once '../classi/Corso.php';
 require_once '../classi/Compito.php';
-require_once '../classi/Consegna.php';
+require_once '../classi/Consegna.php';ù
+require_once '../classi/Voto.php';
 
 $prof_id = $_SESSION['user_id'];
 $corsoObj = new Corso();
 $compitoObj = new Compito();
 $consegnaObj = new Consegna();
+
 
 $messaggio = isset($_GET['msg']) ? $_GET['msg'] : '';
 $errore = isset($_GET['err']) ? $_GET['err'] : '';
@@ -21,12 +23,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $voto = floatval($_POST['voto']);
     $feedback = trim($_POST['feedback']);
     $compito_id_redirect = intval($_POST['compito_id']);
-
     $checkTask = $compitoObj->getCompitoById($compito_id_redirect);
     $max_punti = $checkTask ? $checkTask['punti_max'] : 100;
 
     if ($voto >= 0 && $voto <= $max_punti) {
+        //Salva nella tabella consegne
         if ($consegnaObj->valutaConsegna($consegna_id, $voto, $feedback)) {
+            
+            //Ottieni info sulla consegna per registrare il voto
+            $consegna = $consegnaObj->getConsegnaById($consegna_id);
+            if ($consegna) {
+                $votoObj = new Voto();
+                $corso_id = $checkTask['corso_id'];
+                $studente_id = $consegna['studente_id'];
+                
+                //Converti il voto in scala 30 (se necessario)
+                $voto_trentesimi = ($voto / $max_punti) * 30;
+                
+                //Registra nella tabella voti
+                $votoObj->addVoto(
+                    $studente_id, 
+                    $corso_id, 
+                    'compito', 
+                    round($voto_trentesimi, 2), 
+                    "Compito: " . $checkTask['titolo']
+                );
+            }
+    
             header("Location: valuta_compiti.php?compito_id=" . $compito_id_redirect . "&msg=" . urlencode("Valutazione salvata con successo."));
             exit;
         } else {
